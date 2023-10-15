@@ -12,9 +12,13 @@ import java.util.HashMap;
 public class Empresa {
 	
 	private ArrayList<String[]> usuarios;
-	private  ArrayList<HashMap<Boolean, ArrayList<String>>>  Inventario;
+	private  ArrayList<HashMap<Boolean, ArrayList<String>>>  inventario;
+	public ArrayList<HashMap<Boolean, ArrayList<String>>> getInventario(){
+		return inventario;
+	}
+	
 	private HashMap<String, ArrayList<Empleado>> empleados;
-	private ArrayList<Reserva> reservas;
+	private ArrayList<Reserva> reservas; // Yo creeria que mejor un hash que tenga de llave la ide de la reserva y de valor la reserva puede ser un array
 	
 	//public Restaurante () throws FileNotFoundException  {   PONER CONSTRUCTOR ACA!!!
 		
@@ -25,27 +29,28 @@ public class Empresa {
 		//this.pedidoEnCurso = false;
 		//pedidosPorId = new ArrayList<HashMap<String, String>>();
 		
-		
 
 	
-	public void CargarInformacionEmpresa() throws FileNotFoundException
+	public void CargarInformacionEmpresa(String nombreSede) throws FileNotFoundException
 	
 	{
 		String archivoUsuarios = "data/users.txt";
-		String archivoInventario = "data/inventario.txt";
+		//String archivoInventario = "data/inventario.txt";
 		
 		
 		loaderUsuarios(archivoUsuarios);
-		loaderInventario(archivoInventario);
+		
+		
+		loaderInventario(nombreSede); // 
 		
 		
 	}
 	
 		
-	public void loaderUsuarios(	String archivoIngredientes) throws FileNotFoundException
+	public void loaderUsuarios(String archivoUsuarios) throws FileNotFoundException
 	{
 		
-		try (BufferedReader br = new BufferedReader(new FileReader(archivoIngredientes)))
+		try (BufferedReader br = new BufferedReader(new FileReader(archivoUsuarios)))
 		{
 		ArrayList<String[]> usuarios = new ArrayList<>();
 		String linea = br.readLine();
@@ -74,10 +79,18 @@ public class Empresa {
 			
 		}
 	
-	public void loaderInventario(String archivoIngredientes) throws FileNotFoundException
+	public void loaderInventario(String nombreSede) throws FileNotFoundException
 	{
+		String archivoInventario;
+		if (nombreSede.equalsIgnoreCase("norte"))
+			archivoInventario = "data/inventario_sede_norte.txt";
+		else if (nombreSede.equalsIgnoreCase("sur"))
+			archivoInventario = "data/inventario_sede_sur.txt";
+		else
+			archivoInventario = "data/inventario.txt";
 		
-		try (BufferedReader br = new BufferedReader(new FileReader(archivoIngredientes)))
+		
+		try (BufferedReader br = new BufferedReader(new FileReader(archivoInventario)))
 		{
 		ArrayList<HashMap<Boolean, ArrayList<String>>> general = new ArrayList<>();
 		ArrayList<String> inventario = new ArrayList<>();
@@ -103,7 +116,7 @@ public class Empresa {
 			
 			
 		}
-		this.Inventario = general;
+		this.inventario = general;
 		br.close();
 		}
 		catch(Exception e)  

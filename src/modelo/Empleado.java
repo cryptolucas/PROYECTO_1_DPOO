@@ -14,5 +14,7 @@ public class Empleado extends Usuario{
 		this.sede = sede;
 	}
 	
-
+	public void crearReserva(String tipoVehiculo) {
+		//
+	}
 }

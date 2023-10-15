@@ -32,5 +32,7 @@ public class Cliente extends Usuario{
 		
 
 	}
+	
+	//public hacerReserva()
 
 }

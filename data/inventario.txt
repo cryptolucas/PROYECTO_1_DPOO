@@ -7,22 +7,3 @@ Nissan,MNO678,Altima,Plateado,Automatica,5,Gasolina,Sedan
 Jeep,PQR901,Wrangler,Verde,Manual,4,Gasolina,SUV
 Mazda,STU234,CX-5,Azul,Automatica,5,Gasolina,SUV
 Subaru,VWX567,Outback,Gris,Automatica,5,Gasolina,Station Wagon
-Mercedes-Benz,YZA890,E-Class,Negro,Automatica,5,Gasolina,Sedan
-Audi,BCD123,Q5,Plateado,Automatica,5,Gasolina,SUV
-Hyundai,EFG456,Sonata,Blanco,Automatica,5,Gasolina,Sedan
-BMW,HIJ789,3 Series,Azul,Automatica,5,Gasolina,Sedan
-Kia,KLM012,Sportage,Naranja,Automatica,5,Gasolina,SUV
-Lexus,NOP345,RX,Dorado,Automatica,5,Gasolina,SUV
-Tesla,QRS678,Model 3,Blanco,Automatica,5,Electrico,Sedan
-Fiat,TUV901,500,Amarillo,Manual,4,Gasolina,Compacto
-Chrysler,WXY234,Pacifica,Gris,Automatica,7,Gasolina,Minivan
-Volvo,ZAB567,XC90,Negro,Automatica,7,Gasolina,SUV
-Jaguar,CDE890,F-PACE,Rojo,Automatica,5,Gasolina,SUV
-Land Rover,FGH123,Discovery,Verde,Automatica,7,Gasolina,SUV
-Ram,IJK456,1500,Azul,Automatica,3,Diesel,Pickup
-Porsche,LMN789,911,Amarillo,Automatica,2,Gasolina,Coupe
-Buick,OPQ012,Enclave,Blanco,Automatica,7,Gasolina,SUV
-Infiniti,RST345,QX60,Plateado,Automatica,7,Gasolina,SUV
-Cadillac,UVW678,Escalade,Negro,Automatica,7,Gasolina,SUV
-Acura,XYZ901,MDX,Azul,Automatica,7,Gasolina,SUV
-

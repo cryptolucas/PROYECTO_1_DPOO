@@ -1,0 +1,9 @@
+Mercedes-Benz,YZA890,E-Class,Negro,Automatica,5,Gasolina,Sedan
+Audi,BCD123,Q5,Plateado,Automatica,5,Gasolina,SUV
+Hyundai,EFG456,Sonata,Blanco,Automatica,5,Gasolina,Sedan
+BMW,HIJ789,3 Series,Azul,Automatica,5,Gasolina,Sedan
+Kia,KLM012,Sportage,Naranja,Automatica,5,Gasolina,SUV
+Lexus,NOP345,RX,Dorado,Automatica,5,Gasolina,SUV
+Tesla,QRS678,Model 3,Blanco,Automatica,5,Electrico,Sedan
+Fiat,TUV901,500,Amarillo,Manual,4,Gasolina,Compacto
+Chrysler,WXY234,Pacifica,Gris,Automatica,7,Gasolina,Minivan

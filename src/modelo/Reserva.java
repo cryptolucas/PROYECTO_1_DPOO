@@ -8,8 +8,8 @@ import java.util.Random;
 public class Reserva {
 
 	
-	//private Sede origen;
-		//private Sede destino;
+		private String origen; // nombre, ubi, horarioAtencion // aunq solo por nombre x ahora, no entieno la funcionalidad de lo otro, con un .equals
+		private String destino; // nombre, ubi, horarioAtencion // aunq solo por nombre x ahora, no entieno la funcionalidad de lo otro, con un .equals
 		private String temporada;
 		private double tasaTemporada;
 		private String fechaHoraRecogida;
@@ -20,10 +20,12 @@ public class Reserva {
 		private int idReserva;
 		private String tipoVehiculo;
 		
-		public Reserva(String hora_recogida, String hora_entrega, String metodo_pago,
+		public Reserva(String sedeOrigen, String sedeDestino, String hora_recogida, String hora_entrega, String metodo_pago,
 			   int conductor_adicional, String seguros, String tipo_vehiculo){
 			
 			this.temporada = "baja";
+			this.origen = sedeOrigen;
+			this.destino = sedeDestino;
 			this.fechaHoraRecogida = hora_recogida;
 			this.fechaHoraEntrega = hora_entrega;
 			this.metodoDePago = metodo_pago;
@@ -41,7 +43,8 @@ public class Reserva {
 		
 		
 		
-		public int PrecioFinal(String hora_recogida, String hora_entrega, String seguros, String tipo_vehiculo, int conductor_adicional) {
+		public int PrecioFinal(String sedeOrigen, String sedeDestino, 
+				String hora_recogida, String hora_entrega, String seguros, String tipo_vehiculo, int conductor_adicional) {
 			
 			int valor_seguros = 0;
 			int valor_veh = 0; 
@@ -51,10 +54,11 @@ public class Reserva {
 			
 			if (seguros.equals("1"))
 				valor_seguros = 45000;
-			if (seguros.equals("2"))
+			else if (seguros.equals("2"))
 				valor_seguros = 70000;
-			if (seguros.equals("3"))
+			else if (seguros.equals("3"))
 				valor_seguros = 98000;
+			else valor_seguros = 0;
 			
 
 			        // Formato de fecha y hora
@@ -68,16 +72,16 @@ public class Reserva {
 			 long diasDeDiferencia = ChronoUnit.DAYS.between(fechaHora2, fechaHora1);
 			 int diasDeDiferenciaComoInt = (int) diasDeDiferencia;
 			 
-			 if (tipo_vehiculo.equals("Sedan") || tipo_vehiculo.equals("Coupe") || tipo_vehiculo.equals("Hatchback") || tipo_vehiculo.equals("Compacto"))
+			 if (tipo_vehiculo.equalsIgnoreCase("Sedan") || tipo_vehiculo.equalsIgnoreCase("Coupe") || tipo_vehiculo.equalsIgnoreCase("Hatchback") || tipo_vehiculo.equalsIgnoreCase("Compacto"))
 				 valor_veh = 50000;
-			 if (tipo_vehiculo.equals("Pickup") || tipo_vehiculo.equals("Station Wagon"))
+			 if (tipo_vehiculo.equalsIgnoreCase("Pickup") || tipo_vehiculo.equalsIgnoreCase("Station Wagon"))
 				 valor_veh = 80000;
-			 if (tipo_vehiculo.equals("SUV") || tipo_vehiculo.equals("Minivan"))
+			 if (tipo_vehiculo.equalsIgnoreCase("SUV") || tipo_vehiculo.equalsIgnoreCase("Minivan"))
 				 valor_veh = 65000;
 			 
-			 if (temporada.equals("baja"))
+			 if (temporada.equalsIgnoreCase("baja")) // como determinar esto??, o sea el empleado lo manda o q 
 				 tasatemp = 0.02;
-			 if (temporada.equals("alta"))
+			 if (temporada.equalsIgnoreCase("alta"))
 				 tasatemp = 0.05;
 			 
 			 int precio_sin_tasa = (valor_veh*diasDeDiferenciaComoInt) + valor_seguros + (conductor_adicional*7000);
