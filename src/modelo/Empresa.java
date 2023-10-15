@@ -118,7 +118,7 @@ public class Empresa {
 	
 	
 	
-		public static void CrearCliente(String nombre, String correo, String login, String password, String tipoUsuario,
+		public void CrearCliente(String nombre, String correo, String login, String password, String tipoUsuario,
 						String fechaNacimiento, String nacionalidad,int licenciaConduccion, String paisExpedicion, 
 						String fechaVencimientoLicencia, int telefonoContacto, int numeroTarjetaCredito) throws IOException{
 			
