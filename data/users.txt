@@ -1,0 +1,3 @@
+Sebastian,1234,cliente
+Juan,456,administradorg
+Maria,gato123,administradorl
