@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import modelo.Carro;
 import modelo.Empresa;
 
 public class Aplicacion {
@@ -27,7 +28,7 @@ public class Aplicacion {
 			String fechaNacimiento = input("Ingrese su fecha de nacimiento");
 			String nacionalidad = input("Ingrese su nacionalidad");
 			int licenciaConduccion = Integer.parseInt(input("Ingrese su numero de licencia de conduccion"));
-			String paisExpedicion = input("Ingrese el pais de expedicion de la licencia: ");
+			String paisExpedicion = input("Ingrese el pais de expedicion de la licencia");
 			String fechaVencimientoLicencia = input("Ingrese la fecha de vencimiento de su licencia");
 			int telefonoContacto  = Integer.parseInt(input("Ingrese un numero de telefono de contacto"));
 			int numeroTarjetaCredito = Integer.parseInt(input("Ingrese su numero de la tarjeta de credito"));
@@ -72,7 +73,9 @@ public class Aplicacion {
 		for (HashMap<Boolean, ArrayList<String>> hashMap: empresa.getInventario()) {
 			for (Boolean key : hashMap.keySet()) {
 				ArrayList<String> values = hashMap.get(key);
-				String linea = key +""+ values;
+				//for (String info: values) {System.out.println(key+""+info);}
+				//String marca = Carro.getMarca(); 
+				String linea = key +"-"+ values;
 				System.out.println(linea);
 			}
 		}

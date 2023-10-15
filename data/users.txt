@@ -1,3 +1,5 @@
 Sebastian,1234,cliente
 Juan,456,administradorg
 Maria,gato123,administradorl
+alejpardo,1235468,cliente
+pepe.papa,pepe123,cliente

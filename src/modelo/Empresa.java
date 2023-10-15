@@ -108,6 +108,8 @@ public class Empresa {
 			inventario.add(partes[5]);
 			inventario.add(partes[6]);
 			
+			Carro carroInventario = new Carro()
+			
 			map.put(disponible, inventario);
 			general.add(map);
 			
@@ -191,13 +193,13 @@ public class Empresa {
 		
 		
 		
-		public void CrearReserva (String hora_recogida, String hora_entrega, String metodo_pago,
+		public void CrearReserva (String sedeOrigen, String sedeDestino, String hora_recogida, String hora_entrega, String metodo_pago,
 		         int conductor_adicional, String seguros, String tipo_vehiculo) {
 			
 			
 			
-			Reserva reserva = new Reserva(hora_recogida, hora_entrega, metodo_pago, conductor_adicional, seguros, tipo_vehiculo);
-			reserva.PrecioFinal(hora_recogida, hora_entrega, seguros, tipo_vehiculo, conductor_adicional);
+			Reserva reserva = new Reserva(sedeOrigen, sedeDestino, hora_recogida, hora_entrega, metodo_pago, conductor_adicional, seguros, tipo_vehiculo);
+			reserva.PrecioFinal(sedeOrigen, sedeDestino, hora_recogida, hora_entrega, seguros, tipo_vehiculo, conductor_adicional);
 			
 		
 		}

@@ -11,4 +11,12 @@ public class Carro {
 	private int capacidad;
 	private String tipoMotor;
 	private boolean disponible;
+	
+	public Carro(String marca, String placa, String modeloCarro, String color, String transmision, int capacidad, String tipoMotor) {
+		this.marca = marca;
+	}
+	
+	public String getMarca() {
+		return marca;
+	}
 }
