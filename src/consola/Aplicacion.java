@@ -40,13 +40,6 @@ public class Aplicacion {
 		{
 			try
 			{
-				String sedeOrigen = input("Ingrese la sede en la que recibirá el carro (norte, centro o sur)");
-				if (sedeOrigen.equalsIgnoreCase("norte"))
-					empresa.loaderInventarioSedeNorte();
-				else if (sedeOrigen.equalsIgnoreCase("sur"))
-					empresa.loaderInventarioSedeSur();
-				else if (sedeOrigen.equalsIgnoreCase("centro"))
-					empresa.loaderInventarioSedeCentro();
 				
 				MostrarMenu();
 				int opcion_seleccionada = Integer.parseInt(input("Por favor seleccione una opción"));
@@ -62,7 +55,7 @@ public class Aplicacion {
 					
 			    if (opcion_seleccionada == 2) {
 			    	
-			    		Login();
+			    	Login();
 			        }
 
 	
@@ -133,6 +126,11 @@ public class Aplicacion {
 	public void Login() throws IOException {
 		
 		System.out.println("Bienvenido a la mejor empresa de alquiler de vehiculos en Bogotá \n" );
+    	System.out.println("Si eres administrador general, tu login es: German Romero y tu password es: 456");
+    	System.out.println("Si eres administrador local de la sede norte, tu login es: Hugo Boss y tu password es: admin123");
+    	System.out.println("Si eres administrador local de la sede centro, tu login es: Alvaro Uribe y tu password es: elboss");
+    	System.out.println("Si eres administrador local de la sede sur, tu login es: Maria y tu password es: gato123");
+    	
 		String login = input("Ingrese su nombre de usuario para el login");
 		String password = input("Ingrese su contraseña");
 		boolean checklogin = false;
@@ -169,8 +167,13 @@ public class Aplicacion {
 				String nombre = input("Escribe tu nombre");
 				String licencia = input("Escribe el numero de tu licencia de conduccion");
 				String cedula = input("Ingresa tu Cedula de Ciudadania");
-				String sedeOrigen = input("Ingrese la sede en la que recogerá el carro (norte, centro o sur)");
-				
+				String sedeOrigen = input("Ingrese la sede en la que recibirá el carro (norte, centro o sur)");
+				if (sedeOrigen.equalsIgnoreCase("norte"))
+					empresa.loaderInventarioSedeNorte();
+				else if (sedeOrigen.equalsIgnoreCase("sur"))
+					empresa.loaderInventarioSedeSur();
+				else if (sedeOrigen.equalsIgnoreCase("centro"))
+					empresa.loaderInventarioSedeCentro();
 				String sedeDestino = input("Ingrese la sede en la que entregará el carro (norte, centro o sur)");
 				String fechaHoraRecogida = input("Ingrese la fecha y hora de recogida del vehiculo (\"yyyy-MM-dd'T'HH:mm:ss\")");
 				String fechaHoraEntrega = input("Ingrese la fecha y hora de entrega del vehiculo (\"yyyy-MM-dd'T'HH:mm:ss\")");
@@ -220,21 +223,47 @@ public class Aplicacion {
 		if (checklogin == true && tipouser.equals("empleado")) {
 			
 			System.out.println("Hola Empleado! Que desea hacer...");
-			empresa.loaderInventario();
-			String opc1 = input("1. Desea registrar la entrega de un carro en su sede? (si/no)");
 
-			if (opc1.equals("si")) {
+			System.out.println("1. Desea registrar la entrega de un carro en su sede?");
+			System.out.println("2. Desea consultar una reserva por id?");
+			//System.out.println("3. Desea definir el estado de un carro?"); falta
+			String opc1 = input("Ingrese el numero de la opcion que desea realizar");
+
+			if (opc1.equals("1")) {
 				
 				int id = Integer.parseInt(input("Ingrese el id de la reserva: "));
 				empresa.RecibirCarro(id);
-				
+				System.out.println("Entrega exitosa del carro");
+			}
+			else if (opc1.equals("2")) {
+				//consulta reserva
 			}
 		}
 		
 		if (checklogin == true && tipouser.equals("administradorg")) {
 			
+			empresa.loaderInventario();
 			System.out.println("¿Que tal jefe? Que desea hacer el dia de hoy...");
 			String opc = input("Escriba 1 para añadir un carro al inventario o 2 para eliminar un carro del invenatrio");
+			if (opc.equals("1")) {
+				String marca = input("Ingrese la marca del nuevo carro");
+				String placa = input("Ingrese la placa del nuevo carro");
+				String modeloCarro = input("Ingrese el modelo del nuevo carro");
+				String color = input("Ingrese el color del nuevo carro");
+				String transmision = input("Ingrese el tipo de transmision del nuevo carro");
+				int capacidad = Integer.parseInt(input("Ingrese la capacidad del nuevo carro"));
+				String tipoMotor = input("Ingrese el tipo de motor del nuevo carro");
+				String tipovehiculo = input("Ingrese el tipo de vehiculo del nuevo carro");
+				String sedeAnadir = input("Ingrese la sede a la que quiere añadir el nuevo carro");
+				empresa.AgregarCarro(marca, placa, modeloCarro, color, transmision, capacidad, tipoMotor, tipovehiculo, sedeAnadir);
+				System.out.println("Se ha agregado un carro nuevo exitosamente");
+				}
+			else if (opc.equals("2")) {
+				String modeloCarro = input("Ingrese el modelo del carro que desea eliminar");
+				String sede = input("Ingrese la sede del carro que desea elminiar");
+				empresa.EliminarCarro(modeloCarro, sede);
+				System.out.println("Se ha elmiminado un carro existormanete");
+				}
 			
 			
 		}

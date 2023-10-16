@@ -1,6 +1,8 @@
 Sebastian,1234,cliente
-Juan,456,administradorg
+German Romero,456,administradorg
 Maria,gato123,administradorl
+Alvaro Uribe,elboss,administradorl
+Hugo Boss,admin123,administradorl
 alejpardo,1235468,cliente
 pepe.papa,pepe123,cliente
 camilin1234,12345678,cliente

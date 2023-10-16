@@ -348,8 +348,11 @@ public class Empresa {
 	            		ca.add(carro);
 	            		inventario.put("Reservados", ca);
 	            		int indice = inventario.get("Disponible").indexOf(carro);
-	            		inventario.get("Disponible").remove(indice);
+	            		inventario.get("Disponible").remove(carro);
+	            		//System.out.println(inventario);
 	            		x = true;
+	            		break;
+	            		
 	            		
 	            	}		
 						
@@ -366,16 +369,20 @@ public class Empresa {
 			Reserva res = reservas.get(ID);
 			String tipoveh = res.getTipoVehiculo();
 			
-
-			for (Carro carro : inventario.get("Reservados")) {
+			boolean x = false;
+			
+			while (x==false) {
+				for (Carro carro : inventario.get("Reservados")) {
 	            	
 	            	if (carro.getTipovehiculo().equals(tipoveh)) {
 	            		
 	            		inventario.get("Disponible").add(carro); 
 	            		int indice = inventario.get("Reservados").indexOf(carro);
 	            		inventario.get("Reservados").remove(indice);
+	            		x = true;
+	            		break;}
 	            		
-			}
+				}
 			
 			}
 			
@@ -421,7 +428,7 @@ public class Empresa {
 	    }
 		
 		
-		public void EliminarCarro (String modelo){
+		public void EliminarCarro (String modelo, String sede){
 			
 			boolean x = false;
 			
@@ -432,13 +439,14 @@ public class Empresa {
             	if (carro.getModeloCarro().equals(modelo)) {
             		int indice = inventario.get("Disponible").indexOf(carro);
             		inventario.get("Disponible").remove(indice);
-            		x = true;}
+            		x = true;
+            		break;}
 			}		
 			}
 			
 			
 			try {
-	            FileReader fileReader = new FileReader("data/reservados.txt");
+	            FileReader fileReader = new FileReader("data/inventario.txt");
 	            BufferedReader bufferedReader = new BufferedReader(fileReader);
 
 	            String linea;
@@ -455,7 +463,41 @@ public class Empresa {
 
 	            bufferedReader.close();
 
-	            FileWriter fileWriter = new FileWriter("data/reservados.txt");
+	            FileWriter fileWriter = new FileWriter("data/inventario.txt");
+	            fileWriter.write(contenido.toString());
+	            fileWriter.close();
+
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+			
+			String nombrearchivo = null;
+			if (sede.equals("centro"))
+				nombrearchivo = "data/inventario_sede_centro.txt";
+			else if (sede.equals("sur"))
+				nombrearchivo = "data/inventario_sede_sur.txt";
+			else if (sede.equals("norte"))
+				nombrearchivo = "data/inventario_sede_norte.txt";
+			
+			try {
+	            FileReader fileReader = new FileReader(nombrearchivo);
+	            BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+	            String linea;
+	            StringBuilder contenido = new StringBuilder();
+
+	            while ((linea = bufferedReader.readLine()) != null) {
+	                String[] palabras = linea.split(",");
+	                if (palabras.length > 2 && palabras[2].equals(modelo)) {
+	                    // La palabra deseada está en la posición 3, no agregamos esta línea al contenido
+	                    continue;
+	                }
+	                contenido.append(linea).append("\n");
+	            }
+
+	            bufferedReader.close();
+
+	            FileWriter fileWriter = new FileWriter(nombrearchivo);
 	            fileWriter.write(contenido.toString());
 	            fileWriter.close();
 
@@ -477,11 +519,11 @@ public class Empresa {
 			
 			String nombrearchivo = null;
 			if (sede.equals("centro"))
-				nombrearchivo = "data/inventario_sede_centro";
+				nombrearchivo = "data/inventario_sede_centro.txt";
 			else if (sede.equals("sur"))
-				nombrearchivo = "data/inventario_sede_sur";
+				nombrearchivo = "data/inventario_sede_sur.txt";
 			else if (sede.equals("norte"))
-				nombrearchivo = "data/inventario_sede_norte";
+				nombrearchivo = "data/inventario_sede_norte.txt";
 			
 			
 			String contenido = marca + "," + placa + "," + modeloCarro + "," + color + "," + transmision + "," + Integer.toString(capacidad) + "," + tipoMotor + ","+ tipovehiculo ;
