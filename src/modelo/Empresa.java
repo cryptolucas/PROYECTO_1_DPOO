@@ -325,7 +325,7 @@ public class Empresa {
 		         int conductor_adicional, String seguros, String tipo_vehiculo) throws IOException {
 			
 			
-			
+			boolean x = false;
 			Reserva reserva = new Reserva(sedeOrigen, sedeDestino, hora_recogida, hora_entrega, metodo_pago, conductor_adicional, seguros, tipo_vehiculo);
 			reservas.put(reserva.getIdReserva(), reserva);
 			int preciofinal = reserva.PrecioFinal(sedeOrigen, sedeDestino, hora_recogida, hora_entrega, seguros, tipo_vehiculo, conductor_adicional);
@@ -338,20 +338,23 @@ public class Empresa {
 			writer.newLine(); 
 			writer.close();
 			
-			for (Carro carro : inventario.get("Disponible")) {
+			
+			while (x==false) {
+			
+			   for (Carro carro : inventario.get("Disponible")) {
 	            	
 	            	if (carro.getTipovehiculo().equals(tipo_vehiculo)) {
 	            		ArrayList<Carro> ca = new ArrayList<>();
 	            		ca.add(carro);
-	            		System.out.println(ca); //pruebas
 	            		inventario.put("Reservados", ca);
 	            		int indice = inventario.get("Disponible").indexOf(carro);
 	            		inventario.get("Disponible").remove(indice);
-	            		System.out.println(inventario); // pruebas
-	            		break; //no se, es q se jode en la segunda iteracion, puede ser q a penas entre a ese if pues ya coge el carro, entonces no itera mas...
+	            		x = true;
+	            		
 	            	}		
 						
 			}	
+			}
 			
 			return preciofinal;
 		}
@@ -394,7 +397,6 @@ public class Empresa {
 		                bw.write(linea);
 		                bw.newLine(); // Agrega un salto de línea después de cada línea escrita
 		            }
-
 		            
 
 		        // Renombra el archivo temporal al nombre original
@@ -421,27 +423,85 @@ public class Empresa {
 		
 		public void EliminarCarro (String modelo){
 			
+			boolean x = false;
+			
+			while (x==false) {
+			
 			for (Carro carro : inventario.get("Disponible")) {
             	
             	if (carro.getModeloCarro().equals(modelo)) {
             		int indice = inventario.get("Disponible").indexOf(carro);
             		inventario.get("Disponible").remove(indice);
-            		
-            	
-					
-		}	
+            		x = true;}
+			}		
+			}
+			
+			
+			try {
+	            FileReader fileReader = new FileReader("data/reservados.txt");
+	            BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+	            String linea;
+	            StringBuilder contenido = new StringBuilder();
+
+	            while ((linea = bufferedReader.readLine()) != null) {
+	                String[] palabras = linea.split(",");
+	                if (palabras.length > 2 && palabras[2].equals(modelo)) {
+	                    // La palabra deseada está en la posición 3, no agregamos esta línea al contenido
+	                    continue;
+	                }
+	                contenido.append(linea).append("\n");
+	            }
+
+	            bufferedReader.close();
+
+	            FileWriter fileWriter = new FileWriter("data/reservados.txt");
+	            fileWriter.write(contenido.toString());
+	            fileWriter.close();
+
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	    }
+		
+		
+
+
+
+		public void AgregarCarro(String marca, String placa, String modeloCarro, String color, String transmision, 
+									int capacidad, String tipoMotor, String tipovehiculo, String sede) throws IOException {
+		
+			ArrayList<Carro> lista = inventario.get("Disponible");
+			Carro nuevo = new Carro(marca, placa, modeloCarro, color, transmision, capacidad, tipoMotor, tipovehiculo);
+			lista.add(nuevo);
+			
+			String nombrearchivo = null;
+			if (sede.equals("centro"))
+				nombrearchivo = "data/inventario_sede_centro";
+			else if (sede.equals("sur"))
+				nombrearchivo = "data/inventario_sede_sur";
+			else if (sede.equals("norte"))
+				nombrearchivo = "data/inventario_sede_norte";
+			
+			
+			String contenido = marca + "," + placa + "," + modeloCarro + "," + color + "," + transmision + "," + Integer.toString(capacidad) + "," + tipoMotor + ","+ tipovehiculo ;
+			BufferedWriter writer = new BufferedWriter(new FileWriter(nombrearchivo, true));
+			writer.write(contenido);
+			writer.newLine(); 
+			writer.close();
+			
+			String rutaArchivo = "data/inventario.txt";
+			String contenido2 = marca + "," + placa + "," + modeloCarro + "," + color + "," + transmision + "," + Integer.toString(capacidad) + "," + tipoMotor + ","+ tipovehiculo ;
+			BufferedWriter writer2 = new BufferedWriter(new FileWriter(rutaArchivo, true));
+			writer2.write(contenido2);
+			writer2.newLine(); 
+			writer2.close();
 			
 			
 		}
-		
-		
-		
-		}
-		
-		
-		
+			
+
 }
-	
 	
 
 
