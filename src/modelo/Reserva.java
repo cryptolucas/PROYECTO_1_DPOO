@@ -47,6 +47,7 @@ public class Reserva {
 				String hora_recogida, String hora_entrega, String seguros, String tipo_vehiculo, int conductor_adicional) {
 			
 			int valor_seguros = 0;
+			int recargoSede = 0;
 			int valor_veh = 0; 
 			String temporada =  getTemporada();
 			double tasatemp = 0;
@@ -60,6 +61,10 @@ public class Reserva {
 				valor_seguros = 98000;
 			else valor_seguros = 0;
 			
+			if (sedeOrigen.equals(sedeDestino))
+				recargoSede = 0;
+			else
+				recargoSede = 15000;
 
 			        // Formato de fecha y hora
 			 DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
@@ -70,7 +75,8 @@ public class Reserva {
 
 			        // Calcular la diferencia en días
 			 long diasDeDiferencia = ChronoUnit.DAYS.between(fechaHora2, fechaHora1);
-			 int diasDeDiferenciaComoInt = (int) diasDeDiferencia;
+			 int diasDeDiferenciaComoInt = (int) diasDeDiferencia *(-1);
+			 //System.out.println(diasDeDiferenciaComoInt); // pruebas lo esta calulando negativo por eso el *(-1)
 			 
 			 if (tipo_vehiculo.equalsIgnoreCase("Sedan") || tipo_vehiculo.equalsIgnoreCase("Coupe") || tipo_vehiculo.equalsIgnoreCase("Hatchback") || tipo_vehiculo.equalsIgnoreCase("Compacto"))
 				 valor_veh = 50000;
@@ -84,7 +90,7 @@ public class Reserva {
 			 if (temporada.equalsIgnoreCase("alta"))
 				 tasatemp = 0.05;
 			 
-			 int precio_sin_tasa = (valor_veh*diasDeDiferenciaComoInt) + valor_seguros + (conductor_adicional*7000);
+			 int precio_sin_tasa = (valor_veh*diasDeDiferenciaComoInt) + valor_seguros + (conductor_adicional*7000) + recargoSede;
 			 precio_final = (int) (precio_sin_tasa + (precio_sin_tasa*tasatemp));
 			 
 			 return precio_final;

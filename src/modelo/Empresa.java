@@ -17,8 +17,8 @@ public class Empresa {
 	private ArrayList<String[]> usuarios;
 	private  HashMap<String, ArrayList<Carro>>  inventario;
 	
-	private HashMap<String, ArrayList<Empleado>> empleados;
-	private HashMap<Integer, Reserva> reservas; 
+	private HashMap<String, ArrayList<Empleado>> empleados = new HashMap<>();
+	private HashMap<Integer, Reserva> reservas = new HashMap<>();; 
 	
 	//public Restaurante () throws FileNotFoundException  {   PONER CONSTRUCTOR ACA!!!
 		
@@ -31,7 +31,7 @@ public class Empresa {
 		
 
 	
-	public void CargarInformacionEmpresa(String nombreSede) throws FileNotFoundException
+	public void CargarInformacionEmpresa() throws FileNotFoundException
 	
 	{
 		String archivoUsuarios = "data/users.txt";
@@ -329,7 +329,7 @@ public class Empresa {
 			Reserva reserva = new Reserva(sedeOrigen, sedeDestino, hora_recogida, hora_entrega, metodo_pago, conductor_adicional, seguros, tipo_vehiculo);
 			reservas.put(reserva.getIdReserva(), reserva);
 			int preciofinal = reserva.PrecioFinal(sedeOrigen, sedeDestino, hora_recogida, hora_entrega, seguros, tipo_vehiculo, conductor_adicional);
-			double preciotreinta = preciofinal*0.3;
+			
 			
 			String rutaArchivo = "data/reservados.txt";
 			String contenido = Integer.toString(reserva.getIdReserva()) + "," + nombre + "," + licencia + "," + cedula + ","+ sedeDestino + "," + hora_entrega + "," + tipo_vehiculo + "," + Integer.toString(preciofinal);
@@ -343,9 +343,12 @@ public class Empresa {
 	            	if (carro.getTipovehiculo().equals(tipo_vehiculo)) {
 	            		ArrayList<Carro> ca = new ArrayList<>();
 	            		ca.add(carro);
+	            		System.out.println(ca); //pruebas
 	            		inventario.put("Reservados", ca);
 	            		int indice = inventario.get("Disponible").indexOf(carro);
 	            		inventario.get("Disponible").remove(indice);
+	            		System.out.println(inventario); // pruebas
+	            		break; //no se, es q se jode en la segunda iteracion, puede ser q a penas entre a ese if pues ya coge el carro, entonces no itera mas...
 	            	}		
 						
 			}	

@@ -1,2 +1,4 @@
 alejandro pardo,aparod@gmail.co,29/08,colombia,154547,colombia,14/12,31435514,12457895
 pepe,pepe@gmail.com,29/08,veneca,157154,venezuela,11/12,141414,1518715
+Camilin,camilin@gamil.com,29/08,colombiana,1451687,colombia,11/12,315478,215487896
+Diego,diego@gmail.com,29/08,veneca,117789545,venezuela,11/01,311313131,154154894
