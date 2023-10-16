@@ -11,11 +11,43 @@ public class Carro {
 	private int capacidad;
 	private String tipoMotor;
 	private boolean disponible;
+	private String tipovehiculo;
 	
-	public Carro(String marca, String placa, String modeloCarro, String color, String transmision, int capacidad, String tipoMotor) {
+	public Carro(String marca, String placa, String modeloCarro, String color, String transmision, int capacidad, String tipoMotor, String tipovehiculo) {
 		this.marca = marca;
+		this.placa = placa;
+		this.modeloCarro = modeloCarro;
+		this.color = color;
+		this.transmision = transmision;
+		this.capacidad = capacidad;
+		this.tipoMotor = tipoMotor;
+		this.tipovehiculo = tipovehiculo;
 	}
 	
+	public String getModeloCarro() {
+		return modeloCarro;
+	}
+
+	public void setModeloCarro(String modeloCarro) {
+		this.modeloCarro = modeloCarro;
+	}
+
+	public boolean isDisponible() {
+		return disponible;
+	}
+
+	public void setDisponible(boolean disponible) {
+		this.disponible = disponible;
+	}
+
+	public String getTipovehiculo() {
+		return tipovehiculo;
+	}
+
+	public void setTipovehiculo(String tipovehiculo) {
+		this.tipovehiculo = tipovehiculo;
+	}
+
 	public String getMarca() {
 		return marca;
 	}

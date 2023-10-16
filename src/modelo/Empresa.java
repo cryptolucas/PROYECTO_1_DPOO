@@ -2,23 +2,23 @@ package modelo;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Empresa {
 	
 	private ArrayList<String[]> usuarios;
-	private  ArrayList<HashMap<Boolean, ArrayList<String>>>  inventario;
-	public ArrayList<HashMap<Boolean, ArrayList<String>>> getInventario(){
-		return inventario;
-	}
+	private  HashMap<String, ArrayList<Carro>>  inventario;
 	
 	private HashMap<String, ArrayList<Empleado>> empleados;
-	private ArrayList<Reserva> reservas; // Yo creeria que mejor un hash que tenga de llave la ide de la reserva y de valor la reserva puede ser un array
+	private HashMap<Integer, Reserva> reservas; 
 	
 	//public Restaurante () throws FileNotFoundException  {   PONER CONSTRUCTOR ACA!!!
 		
@@ -41,12 +41,42 @@ public class Empresa {
 		loaderUsuarios(archivoUsuarios);
 		
 		
-		loaderInventario(nombreSede); // 
+		loaderInventario(); // 
 		
 		
 	}
 	
 		
+	public HashMap<String, ArrayList<Carro>> getInventario() {
+		return inventario;
+	}
+
+
+	public void setInventario(HashMap<String, ArrayList<Carro>> inventario) {
+		this.inventario = inventario;
+	}
+
+
+	public HashMap<String, ArrayList<Empleado>> getEmpleados() {
+		return empleados;
+	}
+
+
+	public void setEmpleados(HashMap<String, ArrayList<Empleado>> empleados) {
+		this.empleados = empleados;
+	}
+
+
+	public HashMap<Integer, Reserva> getReservas() {
+		return reservas;
+	}
+
+
+	public void setReservas(HashMap<Integer, Reserva> reservas) {
+		this.reservas = reservas;
+	}
+
+
 	public void loaderUsuarios(String archivoUsuarios) throws FileNotFoundException
 	{
 		
@@ -79,40 +109,28 @@ public class Empresa {
 			
 		}
 	
-	public void loaderInventario(String nombreSede) throws FileNotFoundException
+	public void loaderInventario() throws FileNotFoundException
 	{
-		String archivoInventario;
-		if (nombreSede.equalsIgnoreCase("norte"))
-			archivoInventario = "data/inventario_sede_norte.txt";
-		else if (nombreSede.equalsIgnoreCase("sur"))
-			archivoInventario = "data/inventario_sede_sur.txt";
-		else
-			archivoInventario = "data/inventario.txt";
+		
+		String	archivoInventario = "data/inventario.txt";
 		
 		
 		try (BufferedReader br = new BufferedReader(new FileReader(archivoInventario)))
 		{
-		ArrayList<HashMap<Boolean, ArrayList<String>>> general = new ArrayList<>();
-		ArrayList<String> inventario = new ArrayList<>();
-		HashMap<Boolean, ArrayList<String>> map = new HashMap<>();
-		boolean disponible = true;
+		
+		HashMap<String, ArrayList<Carro>> general = new HashMap<>();
+		ArrayList<Carro> arr = new ArrayList<>();
+		String llave = "Disponible";
+		
 		String linea = br.readLine();
 		while (linea != null)
 		{
 			String[] partes = linea.split(",");
-			inventario.add(partes[0]);
-			inventario.add(partes[1]);
-			inventario.add(partes[2]);
-			inventario.add(partes[3]);
-			inventario.add(partes[4]);
-			inventario.add(partes[5]);
-			inventario.add(partes[6]);
 			
-			Carro carroInventario = new Carro()
-			
-			map.put(disponible, inventario);
-			general.add(map);
-			
+			int capacidad = Integer.parseInt(partes[5]);
+			Carro car = new Carro(partes[0], partes[1], partes[2], partes[3], partes[4], capacidad, partes[6], partes[7]);
+			arr.add(car);
+			general.put(llave, arr);
 
 			linea = br.readLine();
 			
@@ -127,6 +145,116 @@ public class Empresa {
 		}
 			
 		}
+	
+	
+	public void loaderInventarioSedeNorte() throws FileNotFoundException
+	{
+		String archivoInventario = "data/inventario_sede_norte.txt";
+		
+		
+		try (BufferedReader br = new BufferedReader(new FileReader(archivoInventario)))
+		{
+		
+		HashMap<String, ArrayList<Carro>> general = new HashMap<>();
+		ArrayList<Carro> arr = new ArrayList<>();
+		String llave = "Disponible";
+		
+		String linea = br.readLine();
+		while (linea != null)
+		{
+			String[] partes = linea.split(",");
+			
+			int capacidad = Integer.parseInt(partes[5]);
+			Carro car = new Carro(partes[0], partes[1], partes[2], partes[3], partes[4], capacidad, partes[6], partes[7]);
+			arr.add(car);
+			general.put(llave, arr);
+
+			linea = br.readLine();
+			
+			
+		}
+		this.inventario = general;
+		br.close();
+		}
+		catch(Exception e)  
+		{ e.printStackTrace();
+		
+		}
+			
+		}
+	
+	public void loaderInventarioSedeSur() throws FileNotFoundException
+	{
+		String archivoInventario = "data/inventario_sede_sur.txt";
+		
+		
+		try (BufferedReader br = new BufferedReader(new FileReader(archivoInventario)))
+		{
+		
+		HashMap<String, ArrayList<Carro>> general = new HashMap<>();
+		ArrayList<Carro> arr = new ArrayList<>();
+		String llave = "Disponible";
+		
+		String linea = br.readLine();
+		while (linea != null)
+		{
+			String[] partes = linea.split(",");
+			
+			int capacidad = Integer.parseInt(partes[5]);
+			Carro car = new Carro(partes[0], partes[1], partes[2], partes[3], partes[4], capacidad, partes[6], partes[7]);
+			arr.add(car);
+			general.put(llave, arr);
+
+			linea = br.readLine();
+			
+			
+		}
+		this.inventario = general;
+		br.close();
+		}
+		catch(Exception e)  
+		{ e.printStackTrace();
+		
+		}
+			
+		}
+	
+	public void loaderInventarioSedeCentro() throws FileNotFoundException
+	{
+		String archivoInventario = "data/inventario_sede_centro.txt";
+		
+		
+		try (BufferedReader br = new BufferedReader(new FileReader(archivoInventario)))
+		{
+		
+		HashMap<String, ArrayList<Carro>> general = new HashMap<>();
+		ArrayList<Carro> arr = new ArrayList<>();
+		String llave = "Disponible";
+		
+		String linea = br.readLine();
+		while (linea != null)
+		{
+			String[] partes = linea.split(",");
+			
+			int capacidad = Integer.parseInt(partes[5]);
+			Carro car = new Carro(partes[0], partes[1], partes[2], partes[3], partes[4], capacidad, partes[6], partes[7]);
+			arr.add(car);
+			general.put(llave, arr);
+
+			linea = br.readLine();
+			
+			
+		}
+		this.inventario = general;
+		br.close();
+		}
+		catch(Exception e)  
+		{ e.printStackTrace();
+		
+		}
+			
+		}
+	
 	
 	
 		
@@ -193,21 +321,124 @@ public class Empresa {
 		
 		
 		
-		public void CrearReserva (String sedeOrigen, String sedeDestino, String hora_recogida, String hora_entrega, String metodo_pago,
-		         int conductor_adicional, String seguros, String tipo_vehiculo) {
+		public int CrearReserva (String nombre, String licencia, String cedula, String sedeOrigen, String sedeDestino, String hora_recogida, String hora_entrega, String metodo_pago,
+		         int conductor_adicional, String seguros, String tipo_vehiculo) throws IOException {
 			
 			
 			
 			Reserva reserva = new Reserva(sedeOrigen, sedeDestino, hora_recogida, hora_entrega, metodo_pago, conductor_adicional, seguros, tipo_vehiculo);
-			reserva.PrecioFinal(sedeOrigen, sedeDestino, hora_recogida, hora_entrega, seguros, tipo_vehiculo, conductor_adicional);
+			reservas.put(reserva.getIdReserva(), reserva);
+			int preciofinal = reserva.PrecioFinal(sedeOrigen, sedeDestino, hora_recogida, hora_entrega, seguros, tipo_vehiculo, conductor_adicional);
+			double preciotreinta = preciofinal*0.3;
 			
+			String rutaArchivo = "data/reservados.txt";
+			String contenido = Integer.toString(reserva.getIdReserva()) + "," + nombre + "," + licencia + "," + cedula + ","+ sedeDestino + "," + hora_entrega + "," + tipo_vehiculo + "," + Integer.toString(preciofinal);
+			BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo, true));
+			writer.write(contenido);
+			writer.newLine(); 
+			writer.close();
+			
+			for (Carro carro : inventario.get("Disponible")) {
+	            	
+	            	if (carro.getTipovehiculo().equals(tipo_vehiculo)) {
+	            		ArrayList<Carro> ca = new ArrayList<>();
+	            		ca.add(carro);
+	            		inventario.put("Reservados", ca);
+	            		int indice = inventario.get("Disponible").indexOf(carro);
+	            		inventario.get("Disponible").remove(indice);
+	            	}		
+						
+			}	
+			
+			return preciofinal;
+		}
 		
+		
+		
+		public void RecibirCarro(int ID) throws IOException {
+			
+			Reserva res = reservas.get(ID);
+			String tipoveh = res.getTipoVehiculo();
+			
+
+			for (Carro carro : inventario.get("Reservados")) {
+	            	
+	            	if (carro.getTipovehiculo().equals(tipoveh)) {
+	            		
+	            		inventario.get("Disponible").add(carro); 
+	            		int indice = inventario.get("Reservados").indexOf(carro);
+	            		inventario.get("Reservados").remove(indice);
+	            		
+			}
+			
+			}
+			
+			
+			try (BufferedReader br = new BufferedReader(new FileReader("data/reservados"));
+		             BufferedWriter bw = new BufferedWriter(new FileWriter("temporal.txt"))) {
+
+		            String linea;
+
+		            // Lee cada línea del archivo
+		            while ((linea = br.readLine()) != null) {
+		                // Verifica si la línea cumple con la condición
+		                if (obtenerCampo(linea, 0).equals(Integer.toString(ID))) {
+		                    // Agrega "finalizado" al final de la línea
+		                    linea += " (Finalizado)";
+		                }
+
+		                // Escribe la línea (modificada o no) en el archivo temporal
+		                bw.write(linea);
+		                bw.newLine(); // Agrega un salto de línea después de cada línea escrita
+		            }
+
+		            
+
+		        // Renombra el archivo temporal al nombre original
+		        renombrarArchivo("temporal.txt", "data/reservados.txt");
+			}	
 		}
 		
 		
 		
 		
+		public String obtenerCampo(String linea, int posicion) {
+	        // Divide la línea en campos utilizando algún delimitador (por ejemplo, comas)
+	        String[] campos = linea.split(",");
+	        // Retorna el campo en la posición especificada
+	        return campos.length > posicion ? campos[posicion].trim() : "";
+	    }
+		
+		public void renombrarArchivo(String archivoOrigen, String archivoDestino) {
+	        // Renombra el archivo temporal al nombre original
+	        File origen = new File(archivoOrigen);
+	        File destino = new File(archivoDestino);
+	    }
+		
+		
+		public void EliminarCarro (String modelo){
+			
+			for (Carro carro : inventario.get("Disponible")) {
+            	
+            	if (carro.getModeloCarro().equals(modelo)) {
+            		int indice = inventario.get("Disponible").indexOf(carro);
+            		inventario.get("Disponible").remove(indice);
+            		
+            	
+					
+		}	
+			
+			
+		}
+		
+		
+		
+		}
+		
+		
+		
+}
 	
 	
 
-}
+

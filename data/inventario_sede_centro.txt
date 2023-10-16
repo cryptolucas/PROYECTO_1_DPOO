@@ -1,0 +1,9 @@
+Toyota,ABC123,Camry,Azul,Automatica,5,Gasolina,Sedan
+Honda,XYZ456,Civic,Rojo,Manual,5,Gasolina,Sedan
+Ford,DEF789,Mustang,Negro,Automatica,4,Gasolina,Coupe
+Chevrolet,GHI012,Silverado,Gris,Automatica,3,Diesel,Pickup
+Volkswagen,JKL345,Golf,Blanco,Manual,5,Gasolina,Hatchback
+Nissan,MNO678,Altima,Plateado,Automatica,5,Gasolina,Sedan
+Jeep,PQR901,Wrangler,Verde,Manual,4,Gasolina,SUV
+Mazda,STU234,CX-5,Azul,Automatica,5,Gasolina,SUV
+Subaru,VWX567,Outback,Gris,Automatica,5,Gasolina,Station Wagon

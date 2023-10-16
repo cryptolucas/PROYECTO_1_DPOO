@@ -96,6 +96,24 @@ public class Reserva {
 			
 		
 
+		public String getTipoVehiculo() {
+			return tipoVehiculo;
+		}
+
+
+
+
+
+
+		public void setTipoVehiculo(String tipoVehiculo) {
+			this.tipoVehiculo = tipoVehiculo;
+		}
+
+
+
+
+
+
 		public String getTemporada() {
 			return temporada;
 		}
