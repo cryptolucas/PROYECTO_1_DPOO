@@ -85,9 +85,9 @@ public class Reserva {
 			 if (tipo_vehiculo.equalsIgnoreCase("SUV") || tipo_vehiculo.equalsIgnoreCase("Minivan"))
 				 valor_veh = 65000;
 			 
-			 if (temporada.equalsIgnoreCase("baja")) // como determinar esto??, o sea el empleado lo manda o q 
+			 if (fechaHora2.getMonthValue() == 2 || fechaHora2.getMonthValue() == 3 || fechaHora2.getMonthValue() == 4 || fechaHora2.getMonthValue() == 5 || fechaHora2.getMonthValue() == 9 || fechaHora2.getMonthValue() == 10 ) // como determinar esto??, o sea el empleado lo manda o q 
 				 tasatemp = 0.02;
-			 if (temporada.equalsIgnoreCase("alta"))
+			 if (fechaHora2.getMonthValue() == 1 || fechaHora2.getMonthValue() == 6 || fechaHora2.getMonthValue() == 7 || fechaHora2.getMonthValue() == 8 || fechaHora2.getMonthValue() == 11 || fechaHora2.getMonthValue() == 12 )
 				 tasatemp = 0.05;
 			 
 			 int precio_sin_tasa = (valor_veh*diasDeDiferenciaComoInt) + valor_seguros + (conductor_adicional*7000) + recargoSede;

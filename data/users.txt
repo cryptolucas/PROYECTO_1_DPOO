@@ -8,3 +8,4 @@ pepe.papa,pepe123,cliente
 camilin1234,12345678,cliente
 diego.12,112233,cliente
 nuevoEmpleado,mejor,empleado
+coco123,clave123,cliente

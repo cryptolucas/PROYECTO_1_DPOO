@@ -39,6 +39,15 @@ public class Carro {
 	public void setDisponible(boolean disponible) {
 		this.disponible = disponible;
 	}
+	
+
+	public String getPlaca() {
+		return placa;
+	}
+
+	public void setPlaca(String placa) {
+		this.placa = placa;
+	}
 
 	public String getTipovehiculo() {
 		return tipovehiculo;

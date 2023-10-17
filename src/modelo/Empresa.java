@@ -7,15 +7,17 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Empresa {
 	
 	private ArrayList<String[]> usuarios;
-	private  HashMap<String, ArrayList<Carro>>  inventario;
+	private  HashMap<String, ArrayList<Carro>>  inventario = new HashMap<>();
 	
 	private HashMap<String, ArrayList<Empleado>> empleados = new HashMap<>();
 	private HashMap<Integer, Reserva> reservas = new HashMap<>();; 
@@ -39,8 +41,6 @@ public class Empresa {
 		
 		
 		loaderUsuarios(archivoUsuarios);
-		
-		
 		loaderInventario(); // 
 		
 		
@@ -347,9 +347,7 @@ public class Empresa {
 	            		ArrayList<Carro> ca = new ArrayList<>();
 	            		ca.add(carro);
 	            		inventario.put("Reservados", ca);
-	            		int indice = inventario.get("Disponible").indexOf(carro);
 	            		inventario.get("Disponible").remove(carro);
-	            		//System.out.println(inventario);
 	            		x = true;
 	            		break;
 	            		
@@ -364,31 +362,66 @@ public class Empresa {
 		
 		
 		
-		public void RecibirCarro(int ID) throws IOException {
+		public void RecibirCarro(int ID, String sede) throws IOException {
 			
-			Reserva res = reservas.get(ID);
-			String tipoveh = res.getTipoVehiculo();
+			String tipo_veh = null;
 			
-			boolean x = false;
-			
-			while (x==false) {
-				for (Carro carro : inventario.get("Reservados")) {
-	            	
-	            	if (carro.getTipovehiculo().equals(tipoveh)) {
-	            		
-	            		inventario.get("Disponible").add(carro); 
-	            		int indice = inventario.get("Reservados").indexOf(carro);
-	            		inventario.get("Reservados").remove(indice);
-	            		x = true;
-	            		break;}
-	            		
-				}
-			
-			}
+
+			if (sede.equalsIgnoreCase("norte")) 
+				loaderInventarioSedeNorte();
+
+			else if (sede.equalsIgnoreCase("sur")) 
+				loaderInventarioSedeSur();
+
+			else if (sede.equalsIgnoreCase("centro")) 
+				loaderInventarioSedeCentro();
+
 			
 			
-			try (BufferedReader br = new BufferedReader(new FileReader("data/reservados"));
-		             BufferedWriter bw = new BufferedWriter(new FileWriter("temporal.txt"))) {
+			try {
+	            FileReader fileReader = new FileReader("data/reservados.txt");
+	            BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+	            String linea;
+	            while ((linea = bufferedReader.readLine()) != null) {
+	                // Dividir la línea en partes usando comas como delimitador
+	                String[] partes = linea.split(",");
+
+	                // Verificar si la primera posición contiene el string buscado
+	                if (partes.length > 0 && partes[0].equals(Integer.toString(ID))) {
+	                    
+	                	tipo_veh = partes[6];
+	                    
+	                    break; // Detener la búsqueda después de encontrar la primera línea
+	                }
+	            }
+
+	            bufferedReader.close();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+  
+//			ArrayList<Carro> lista_reservados = inventario.get("Reservados");
+//			ArrayList<Carro> lista_disponible= inventario.get("Disponible");
+//			boolean x = false;
+//			
+//			while (x==false) {
+//			
+//				for (Carro carro : lista_reservados) {
+//            	
+//            	if (carro.getTipovehiculo().equals(tipo_veh)) {
+//            		lista_disponible.add(carro);
+//            		lista_reservados.remove(carro);
+//            		x = true;
+//            		break;}
+//			}		
+//			}
+//			
+			
+			
+			
+			try (BufferedReader br = new BufferedReader(new FileReader("data/reservados.txt"));
+		             BufferedWriter bw = new BufferedWriter(new FileWriter("data/temporal.txt"))) {
 
 		            String linea;
 
@@ -407,8 +440,10 @@ public class Empresa {
 		            
 
 		        // Renombra el archivo temporal al nombre original
-		        renombrarArchivo("temporal.txt", "data/reservados.txt");
+		            renombrarArchivo("data/temporal.txt", "data/reservados.txt");
+		            
 			}	
+			
 		}
 		
 		
@@ -422,11 +457,12 @@ public class Empresa {
 	    }
 		
 		public void renombrarArchivo(String archivoOrigen, String archivoDestino) {
-	        // Renombra el archivo temporal al nombre original
-	        File origen = new File(archivoOrigen);
-	        File destino = new File(archivoDestino);
-	    }
-		
+			
+            File origen = new File(archivoOrigen);
+            File destino = new File(archivoDestino);
+            boolean exito = origen.renameTo(destino);
+	    
+		}
 		
 		public void EliminarCarro (String modelo, String sede){
 			
@@ -437,8 +473,7 @@ public class Empresa {
 			for (Carro carro : inventario.get("Disponible")) {
             	
             	if (carro.getModeloCarro().equals(modelo)) {
-            		int indice = inventario.get("Disponible").indexOf(carro);
-            		inventario.get("Disponible").remove(indice);
+            		inventario.get("Disponible").remove(carro);
             		x = true;
             		break;}
 			}		
@@ -507,8 +542,133 @@ public class Empresa {
 	    }
 		
 		
+		
+		
+		
+		
+		
+		public void EnviarAMantenimiento(String placa, String sede, String fecha_estimada) throws IOException {
+			
+			boolean x = false;
+			String rutaArchivo = null;
+			
+			if (sede.equalsIgnoreCase("norte")) {
+				loaderInventarioSedeNorte();
+				rutaArchivo = "data/mantenimiento_norte.txt";}
+			else if (sede.equalsIgnoreCase("sur")) {
+				loaderInventarioSedeSur();
+				rutaArchivo = "data/mantenimiento_sur.txt";}
+			else if (sede.equalsIgnoreCase("centro")) {
+				loaderInventarioSedeCentro();
+				rutaArchivo = "data/mantenimiento_centro.txt";}
+			
+			while (x==false) {
+				
+				   for (Carro carro : inventario.get("Disponible")) {
+		            	
+		            	if (carro.getPlaca().equals(placa)) {
+		            		ArrayList<Carro> ca = new ArrayList<>();
+		            		ca.add(carro);
+		            		inventario.put("Mantenimiento", ca);
+		            		inventario.get("Disponible").remove(carro);
+		            		x = true;
+		            		break;
+		            		
+		            		
+		            	}		
+							
+				}
+			
+			
+			}
+			
+		
+			String contenido = placa + "," + sede + "," + fecha_estimada;
+			BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo, true));
+			writer.write(contenido);
+			writer.newLine(); 
+			writer.close();
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		public void SacarMantenimiento(String placa, String sede) throws IOException { 
+				
+				String rutaArchivo = null;
+				
+				if (sede.equalsIgnoreCase("norte")) {
+					rutaArchivo = "data/mantenimiento_norte.txt";}
+				else if (sede.equalsIgnoreCase("sur")) {
+					rutaArchivo = "data/mantenimiento_sur.txt";}
+				else if (sede.equalsIgnoreCase("centro")) {
+					rutaArchivo = "data/mantenimiento_centro.txt";}
+				
+				
+				ArrayList<Carro> lista_mantenimiento = inventario.get("Mantenimiento");
+				ArrayList<Carro> lista_disponible= inventario.get("Disponible");
+				boolean x = false;
+				
+				while (x==false) {
+				
+					for (Carro carro : lista_mantenimiento) {
+	            	
+	            	if (carro.getPlaca().equals(placa)) {
+	            		lista_disponible.add(carro);
+	            		lista_mantenimiento.remove(carro);
+	            		x = true;
+	            		break;}
+				}		
+				}
+				
+			
+				try {
+		            FileReader fileReader = new FileReader(rutaArchivo);
+		            BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+		            // Crear un nuevo archivo temporal
+		            String nombreArchivoTemporal = "temporal.txt";
+		            FileWriter fileWriter = new FileWriter(nombreArchivoTemporal);
+		            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+		            String linea;
+		            while ((linea = bufferedReader.readLine()) != null) {
+		                // Verificar si la primera posición de la línea contiene el string a buscar
+		                String[] partes = linea.split(",");
+		                if (partes.length > 0 && partes[0].equals(placa)) {
+		                    // No escribir la línea en el archivo temporal
+		                    continue;
+		                }
+
+		                // Escribir la línea en el archivo temporal
+		                bufferedWriter.write(linea);
+		                bufferedWriter.newLine();
+		            }
+
+		            // Cerrar los lectores y escritores
+		            bufferedReader.close();
+		            bufferedWriter.close();
+
+		            // Renombrar el archivo temporal al nombre del archivo original
+		            File archivoOriginal = new File(rutaArchivo);
+		            File archivoTemporal = new File(nombreArchivoTemporal);
+		            archivoTemporal.renameTo(archivoOriginal);
 
 
+		        } catch (IOException e) {
+		            e.printStackTrace();
+		        }
+		    }
+			
+			
+			
+			
 
 		public void AgregarCarro(String marca, String placa, String modeloCarro, String color, String transmision, 
 									int capacidad, String tipoMotor, String tipovehiculo, String sede) throws IOException {
@@ -541,9 +701,42 @@ public class Empresa {
 			
 			
 		}
+		
+		public String ConsultarReserva(String ID) {
 			
+			String reserva = null;
+			
+			try {
+	            FileReader fileReader = new FileReader("data/reservados.txt");
+	            BufferedReader bufferedReader = new BufferedReader(fileReader);
 
+	            String linea;
+	            while ((linea = bufferedReader.readLine()) != null) {
+	                // Dividir la línea en partes usando comas como delimitador
+	                String[] partes = linea.split(",");
+
+	                // Verificar si la primera posición contiene el string buscado
+	                if (partes.length > 0 && partes[0].equals(ID)) {
+	                    
+	                	reserva = linea;
+	                    
+	                    break; // Detener la búsqueda después de encontrar la primera línea
+	                }
+	            }
+
+	            bufferedReader.close();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	    
+			return reserva;
+			
+		}
+		
+		
 }
+
+
 	
 
 

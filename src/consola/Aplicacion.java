@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 import modelo.Carro;
 import modelo.Empresa;
+import modelo.Reserva;
 
 
 public class Aplicacion {
@@ -226,18 +227,45 @@ public class Aplicacion {
 
 			System.out.println("1. Desea registrar la entrega de un carro en su sede?");
 			System.out.println("2. Desea consultar una reserva por id?");
-			//System.out.println("3. Desea definir el estado de un carro?"); falta
+			System.out.println("3. Desea enviar a mantenimiento un vehículo?");
+			System.out.println("4. Desea sacar de mantenimiento un vehículo?");
+	
 			String opc1 = input("Ingrese el numero de la opcion que desea realizar");
 
 			if (opc1.equals("1")) {
 				
-				int id = Integer.parseInt(input("Ingrese el id de la reserva: "));
-				empresa.RecibirCarro(id);
+				int id = Integer.parseInt(input("Ingrese el id de la reserva"));
+				String sede = input("Desde que sede recibes el carro?");
+				empresa.RecibirCarro(id, sede);
 				System.out.println("Entrega exitosa del carro");
 			}
 			else if (opc1.equals("2")) {
-				//consulta reserva
+				
+				String id = input("Ingresa el ID de la reserva");
+				empresa.ConsultarReserva(id);
+				
+
 			}
+			else if (opc1.equals("3")) {
+				
+				String placa = input("Ingresa la placa del carro que enviaras a mantenimeinto");
+				String sede = input("Recuerdanos la sede donde trabajas (norte,sur,centro)");
+				String fechaes = input("¿Para que fecha estimada estara disponible el vehiculo?");
+				empresa.EnviarAMantenimiento(placa, sede, fechaes);
+				
+
+			}
+			
+			else if (opc1.equals("4")) {
+				
+				String placa = input("Ingresa la placa del carro que enviaras a mantenimeinto");
+				String sede = input("Recuerdanos la sede donde trabajas (norte,sur,centro)");
+				empresa.SacarMantenimiento(placa, sede);
+				
+
+			}
+			
+			
 		}
 		
 		if (checklogin == true && tipouser.equals("administradorg")) {
@@ -265,7 +293,7 @@ public class Aplicacion {
 				System.out.println("Se ha elmiminado un carro existormanete");
 				}
 			
-			
+
 		}
 		
 		
@@ -300,7 +328,6 @@ public class Aplicacion {
 	public static void main(String[] args) throws IOException
 	{
 		Aplicacion consola = new Aplicacion();
-		//consola.registrarUsuario();
 		consola.ejecutarAplicacion();
 	}
 }
