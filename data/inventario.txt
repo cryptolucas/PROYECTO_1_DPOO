@@ -1,4 +1,3 @@
-Toyota,ABC123,Camry,Azul,Automatica,5,Gasolina,Sedan
 Honda,XYZ456,Civic,Rojo,Manual,5,Gasolina,Sedan
 Ford,DEF789,Mustang,Negro,Automatica,4,Gasolina,Coupe
 Chevrolet,GHI012,Silverado,Gris,Automatica,3,Diesel,Pickup
@@ -24,3 +23,42 @@ Buick,OPQ012,Enclave,Blanco,Automatica,7,Gasolina,SUV
 Infiniti,RST345,QX60,Plateado,Automatica,7,Gasolina,SUV
 Cadillac,UVW678,Escalade,Negro,Automatica,7,Gasolina,SUV
 Acura,XYZ901,MDX,Azul,Automatica,7,Gasolina,SUV
+Toyota,ABC123,Corolla,Azul,Automática,5,Gasolina,Sedan
+Ford,DEF789,Focus,Blanco,Manual,5,Gasolina,Hatchback
+Chevrolet,GHI234,Silverado,Negro,Automática,3,Diesel,Pickup
+Volkswagen,JKL567,Golf,Verde,Manual,5,Gasolina,Hatchback
+Subaru,MNO890,Outback,Gris,Automática,5,Gasolina,Station Wagon
+Jeep,PQR123,Wrangler,Amarillo,Manual,4,Gasolina,SUV
+Kia,STU456,Sorento,Blanco,Automática,7,Gasolina,SUV
+Chrysler,VWX789,Pacifica,Plata,Automática,7,Híbrido,Minivan
+Nissan,YZD234,Altima,Negro,Automática,5,Gasolina,Sedan
+Mazda,LMN567,MX-5,Rojo,Manual,2,Gasolina,Coupe
+Hyundai,OPQ890,Elantra,Azul,Automática,5,Gasolina,Sedan
+Dodge,RST123,Charger,Plata,Automática,5,Gasolina,Sedan
+Chevrolet,UVW456,Colorado,Rojo,Automática,5,Gasolina,Pickup
+Ford,XYZ789,Escape,Blanco,Automática,5,Gasolina,SUV
+Toyota,ABC012,Highlander,Gris,Automática,7,Híbrido,SUV
+Honda,DEF345,Fit,Verde,Manual,5,Gasolina,Hatchback
+Volkswagen,GHI678,Tiguan,Negro,Automática,5,Gasolina,SUV
+Jeep,JKL901,Grand Cherokee,Plata,Automática,5,Gasolina,SUV
+Honda,AAA001,Civic,Rojo,Manual,5,Gasolina,Sedan
+Toyota,AAA002,Corolla,Azul,Automática,5,Gasolina,Coupe
+Ford,AAA003,Focus,Blanco,Manual,5,Gasolina,Hatchback
+Chevrolet,AAA004,Silverado,Negro,Automática,3,Diesel,Pickup
+Volkswagen,AAA005,Golf,Verde,Manual,5,Gasolina,Station Wagon
+Subaru,AAA006,Outback,Gris,Automática,5,Gasolina,SUV
+Jeep,AAA007,Wrangler,Amarillo,Manual,4,Gasolina,Minivan
+Nissan,AAA008,Altima,Plateado,Automática,5,Gasolina,Sedan
+Mazda,AAA009,MX-5,Azul,Manual,2,Gasolina,Coupe
+Hyundai,AAA010,Elantra,Rojo,Automática,5,Gasolina,Hatchback
+Dodge,AAA011,Charger,Negro,Automática,5,Gasolina,Pickup
+Kia,AAA012,Soul,Blanco,Manual,5,Gasolina,Station Wagon
+Volvo,AAA013,XC90,Gris,Automática,7,Híbrido,SUV
+Jeep,AAA014,Cherokee,Verde,Automática,5,Gasolina,SUV
+Subaru,AAA015,Impreza,Azul,Manual,5,Gasolina,Sedan
+Chevrolet,AAA016,Equinox,Blanco,Automática,5,Gasolina,SUV
+Ford,AAA017,F-150,Rojo,Automática,3,Gasolina,Pickup
+Toyota,AAA018,RAV4,Verde,Automática,5,Híbrido,SUV
+Volkswagen,AAA019,Passat,Plateado,Automática,5,Gasolina,Sedan
+Nissan,AAA020,Murano,Gris,Automática,5,Gasolina,SUV
+Mazda,AAA021,CX-5,Azul,Automática,5,Gasolina,SUV

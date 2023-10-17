@@ -1,9 +1,21 @@
-Mercedes-Benz,YZA890,E-Class,Negro,Automatica,5,Gasolina,Sedan
-Audi,BCD123,Q5,Plateado,Automatica,5,Gasolina,SUV
-Hyundai,EFG456,Sonata,Blanco,Automatica,5,Gasolina,Sedan
-BMW,HIJ789,3 Series,Azul,Automatica,5,Gasolina,Sedan
-Kia,KLM012,Sportage,Naranja,Automatica,5,Gasolina,SUV
-Lexus,NOP345,RX,Dorado,Automatica,5,Gasolina,SUV
-Tesla,QRS678,Model 3,Blanco,Automatica,5,Electrico,Sedan
 Fiat,TUV901,500,Amarillo,Manual,4,Gasolina,Compacto
 Chrysler,WXY234,Pacifica,Gris,Automatica,7,Gasolina,Minivan
+Jaguar,CDE890,F-PACE,Rojo,Automatica,5,Gasolina,SUV
+Land Rover,FGH123,Discovery,Verde,Automatica,7,Gasolina,SUV
+Ram,IJK456,1500,Azul,Automatica,3,Diesel,Pickup
+Porsche,LMN789,911,Amarillo,Automatica,2,Gasolina,Coupe
+Buick,OPQ012,Enclave,Blanco,Automatica,7,Gasolina,SUV
+Infiniti,RST345,QX60,Plateado,Automatica,7,Gasolina,SUV
+Cadillac,UVW678,Escalade,Negro,Automatica,7,Gasolina,SUV
+Acura,XYZ901,MDX,Azul,Automatica,7,Gasolina,SUV
+Toyota,ABC123,Corolla,Azul,Automática,5,Gasolina,Sedan
+Ford,DEF789,Focus,Blanco,Manual,5,Gasolina,Hatchback
+Chevrolet,GHI234,Silverado,Negro,Automática,3,Diesel,Pickup
+Volkswagen,JKL567,Golf,Verde,Manual,5,Gasolina,Hatchback
+Nissan,AAA008,Altima,Plateado,Automática,5,Gasolina,Sedan
+Mazda,AAA009,MX-5,Azul,Manual,2,Gasolina,Coupe
+Hyundai,AAA010,Elantra,Rojo,Automática,5,Gasolina,Hatchback
+Dodge,AAA011,Charger,Negro,Automática,5,Gasolina,Pickup
+Kia,AAA012,Soul,Blanco,Manual,5,Gasolina,Station Wagon
+Volvo,AAA013,XC90,Gris,Automática,7,Híbrido,SUV
+Jeep,AAA014,Cherokee,Verde,Automática,5,Gasolina,SUV

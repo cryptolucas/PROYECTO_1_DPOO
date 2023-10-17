@@ -356,7 +356,7 @@ public class Empresa {
 						
 			}	
 			}
-			
+			System.out.println("El id de la reserva es: " + Integer.toString(reserva.getIdReserva()));
 			return preciofinal;
 		}
 		
@@ -424,37 +424,37 @@ public class Empresa {
 		             BufferedWriter bw = new BufferedWriter(new FileWriter("data/temporal.txt"))) {
 
 		            String linea;
-
+		            StringBuilder contenido = new StringBuilder();
 		            // Lee cada línea del archivo
 		            while ((linea = br.readLine()) != null) {
+		            	String[] palabras = linea.split(",");
 		                // Verifica si la línea cumple con la condición
-		                if (obtenerCampo(linea, 0).equals(Integer.toString(ID))) {
+		                if (palabras.length > 0 && palabras[0].equals(Integer.toString(ID))) {
 		                    // Agrega "finalizado" al final de la línea
 		                    linea += " (Finalizado)";
 		                }
-
 		                // Escribe la línea (modificada o no) en el archivo temporal
 		                bw.write(linea);
+		                contenido.append(linea).append("\n");
 		                bw.newLine(); // Agrega un salto de línea después de cada línea escrita
 		            }
 		            
+		            br.close();
 
-		        // Renombra el archivo temporal al nombre original
-		            renombrarArchivo("data/temporal.txt", "data/reservados.txt");
+		            FileWriter fileWriter = new FileWriter("data/reservados.txt");
+		            fileWriter.write(contenido.toString());
+		            fileWriter.close();
 		            
+		                
 			}	
+			catch (IOException e) {
+	            e.printStackTrace();
+	        }
 			
 		}
 		
 		
 		
-		
-		public String obtenerCampo(String linea, int posicion) {
-	        // Divide la línea en campos utilizando algún delimitador (por ejemplo, comas)
-	        String[] campos = linea.split(",");
-	        // Retorna el campo en la posición especificada
-	        return campos.length > posicion ? campos[posicion].trim() : "";
-	    }
 		
 		public void renombrarArchivo(String archivoOrigen, String archivoDestino) {
 			
@@ -611,57 +611,50 @@ public class Empresa {
 					rutaArchivo = "data/mantenimiento_centro.txt";}
 				
 				
-				ArrayList<Carro> lista_mantenimiento = inventario.get("Mantenimiento");
-				ArrayList<Carro> lista_disponible= inventario.get("Disponible");
-				boolean x = false;
+//				ArrayList<Carro> lista_mantenimiento = inventario.get("Mantenimiento");
+//				ArrayList<Carro> lista_disponible= inventario.get("Disponible");
+//				boolean x = false;
+//				
+//				while (x==false) {
+//				
+//					for (Carro carro : lista_mantenimiento) {
+//	            	
+//	            	if (carro.getPlaca().equals(placa)) {
+//	            		lista_disponible.add(carro);
+//	            		lista_mantenimiento.remove(carro);
+//	            		x = true;
+//	            		break;}
+//				}		
+//				}
 				
-				while (x==false) {
-				
-					for (Carro carro : lista_mantenimiento) {
-	            	
-	            	if (carro.getPlaca().equals(placa)) {
-	            		lista_disponible.add(carro);
-	            		lista_mantenimiento.remove(carro);
-	            		x = true;
-	            		break;}
-				}		
-				}
-				
-			
-				try {
-		            FileReader fileReader = new FileReader(rutaArchivo);
-		            BufferedReader bufferedReader = new BufferedReader(fileReader);
+				try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo));
+			             BufferedWriter bw = new BufferedWriter(new FileWriter("data/temporal.txt"))) {
 
-		            // Crear un nuevo archivo temporal
-		            String nombreArchivoTemporal = "temporal.txt";
-		            FileWriter fileWriter = new FileWriter(nombreArchivoTemporal);
-		            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+			            String linea;
+			            StringBuilder contenido = new StringBuilder();
+			            // Lee cada línea del archivo
+			            while ((linea = br.readLine()) != null) {
+			            	String[] palabras = linea.split(",");
+			                // Verifica si la línea cumple con la condición
+			                if (palabras.length > 0 && palabras[0].equals(placa)) {
+			                    // Agrega "finalizado" al final de la línea
+			                    linea += " (Finalizado de mantenimiento)";
+			                }
+			                // Escribe la línea (modificada o no) en el archivo temporal
+			                bw.write(linea);
+			                contenido.append(linea).append("\n");
+			                bw.newLine(); // Agrega un salto de línea después de cada línea escrita
+			            }
+			            
+			            br.close();
 
-		            String linea;
-		            while ((linea = bufferedReader.readLine()) != null) {
-		                // Verificar si la primera posición de la línea contiene el string a buscar
-		                String[] partes = linea.split(",");
-		                if (partes.length > 0 && partes[0].equals(placa)) {
-		                    // No escribir la línea en el archivo temporal
-		                    continue;
-		                }
-
-		                // Escribir la línea en el archivo temporal
-		                bufferedWriter.write(linea);
-		                bufferedWriter.newLine();
-		            }
-
-		            // Cerrar los lectores y escritores
-		            bufferedReader.close();
-		            bufferedWriter.close();
-
-		            // Renombrar el archivo temporal al nombre del archivo original
-		            File archivoOriginal = new File(rutaArchivo);
-		            File archivoTemporal = new File(nombreArchivoTemporal);
-		            archivoTemporal.renameTo(archivoOriginal);
-
-
-		        } catch (IOException e) {
+			            FileWriter fileWriter = new FileWriter(rutaArchivo);
+			            fileWriter.write(contenido.toString());
+			            fileWriter.close();
+			            
+			                
+				}	
+				catch (IOException e) {
 		            e.printStackTrace();
 		        }
 		    }
@@ -728,7 +721,6 @@ public class Empresa {
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
-	    
 			return reserva;
 			
 		}

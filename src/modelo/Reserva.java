@@ -33,7 +33,7 @@ public class Reserva {
 			this.seguros = seguros;
 			this.tipoVehiculo = tipo_vehiculo;
 			Random random = new Random();
-			this.idReserva = random.nextInt(100);
+			this.idReserva = random.nextInt(500);
 			
 			
 		}
