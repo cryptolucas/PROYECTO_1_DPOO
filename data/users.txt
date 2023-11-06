@@ -10,3 +10,5 @@ diego.12,112233,cliente
 nuevoEmpleado,mejor,empleado
 coco123,clave123,cliente
 empleadoSantiago,santi456,empleado
+javier123,contrasela,cliente
+empleado213,loca,empleado

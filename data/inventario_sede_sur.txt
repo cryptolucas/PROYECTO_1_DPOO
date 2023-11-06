@@ -11,11 +11,10 @@ Ford,XYZ789,Escape,Blanco,Automática,5,Gasolina,SUV
 Toyota,ABC012,Highlander,Gris,Automática,7,Híbrido,SUV
 Honda,DEF345,Fit,Verde,Manual,5,Gasolina,Hatchback
 Volkswagen,GHI678,Tiguan,Negro,Automática,5,Gasolina,SUV
-Jeep,JKL901,Grand Cherokee,Plata,Automática,5,Gasolina,SUV
 Subaru,AAA015,Impreza,Azul,Manual,5,Gasolina,Sedan
 Chevrolet,AAA016,Equinox,Blanco,Automática,5,Gasolina,SUV
 Ford,AAA017,F-150,Rojo,Automática,3,Gasolina,Pickup
 Toyota,AAA018,RAV4,Verde,Automática,5,Híbrido,SUV
 Volkswagen,AAA019,Passat,Plateado,Automática,5,Gasolina,Sedan
 Nissan,AAA020,Murano,Gris,Automática,5,Gasolina,SUV
-Mazda,AAA021,CX-5,Azul,Automática,5,Gasolina,SUV
+Mazda,AAA021,CX-5,Azul,Automática,5,Gasolina,SUVJEEP,ASW454,Grand Cherokee,Negro,Automatica,7,Gasolina,Hatchback

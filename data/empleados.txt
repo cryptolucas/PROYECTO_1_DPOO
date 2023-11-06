@@ -1,2 +1,3 @@
 Pipe,12,norte
 Santiago,78,sur
+locaq,78,norte

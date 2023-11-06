@@ -40,7 +40,6 @@ Ford,XYZ789,Escape,Blanco,Automática,5,Gasolina,SUV
 Toyota,ABC012,Highlander,Gris,Automática,7,Híbrido,SUV
 Honda,DEF345,Fit,Verde,Manual,5,Gasolina,Hatchback
 Volkswagen,GHI678,Tiguan,Negro,Automática,5,Gasolina,SUV
-Jeep,JKL901,Grand Cherokee,Plata,Automática,5,Gasolina,SUV
 Honda,AAA001,Civic,Rojo,Manual,5,Gasolina,Sedan
 Toyota,AAA002,Corolla,Azul,Automática,5,Gasolina,Coupe
 Ford,AAA003,Focus,Blanco,Manual,5,Gasolina,Hatchback
