@@ -12,3 +12,4 @@ coco123,clave123,cliente
 empleadoSantiago,santi456,empleado
 javier123,contrasela,cliente
 empleado213,loca,empleado
+pepeelpana,Cliente,pepe.pe@

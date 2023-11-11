@@ -46,7 +46,7 @@ public class Aplicacion {
 			}
 				
 			else if (opcion_seleccionada == 2) {
-		    	Login();
+		    	//Login();
 		    }
 
 			else if (opcion_seleccionada == 3){
@@ -101,16 +101,16 @@ public class Aplicacion {
 			
 			
 	
-	public void Login() throws IOException {
+	public String Login(String login, String password) throws IOException {
 		
-		System.out.println("Bienvenido a la mejor empresa de alquiler de vehiculos en Bogotá \n" );
-    	System.out.println("Si eres administrador general, tu login es: German Romero y tu password es: 456");
-    	System.out.println("Si eres administrador local de la sede norte, tu login es: Hugo Boss y tu password es: admin123");
-    	System.out.println("Si eres administrador local de la sede centro, tu login es: Alvaro Uribe y tu password es: elboss");
-    	System.out.println("Si eres administrador local de la sede sur, tu login es: Maria y tu password es: gato123");
+//		System.out.println("Bienvenido a la mejor empresa de alquiler de vehiculos en Bogotá \n" );
+//    	System.out.println("Si eres administrador general, tu login es: German Romero y tu password es: 456");
+//    	System.out.println("Si eres administrador local de la sede norte, tu login es: Hugo Boss y tu password es: admin123");
+//    	System.out.println("Si eres administrador local de la sede centro, tu login es: Alvaro Uribe y tu password es: elboss");
+//    	System.out.println("Si eres administrador local de la sede sur, tu login es: Maria y tu password es: gato123");
     	
-		String login = input("Ingrese su nombre de usuario para el login");
-		String password = input("Ingrese su contraseña");
+		//String login = input("Ingrese su nombre de usuario para el login");
+		//String password = input("Ingrese su contraseña");
 		boolean checklogin = false;
 		String tipouser = null;
 		
@@ -130,171 +130,175 @@ public class Aplicacion {
             
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Error al leer el archivo.");
+            //System.out.println("Error al leer el archivo.");
         }
 		
-		if (checklogin == true && tipouser.equals("cliente")) {
-			System.out.println("                                                                                   ");
-			System.out.println("El precio por día para rentar un carro tipo SEDAN o COUPE o HATCHBACK es de $50,000");
-			System.out.println("El precio por día para rentar un carro tipo SUV o MINIVAN es de $65,000");
-			System.out.println("El precio por día para rentar un carro tipo PICKUP o STATION WAGON es de $80,000");
-			System.out.println("                                                                                   ");
-			System.out.println("1. Realizar una reserva");
-			System.out.println("2. Consultar una reserva por Id");
-			String continuar = input("Ingrese la opcion que desea hacer");
-			
-			if (continuar.equalsIgnoreCase("1"))  {
-				String nombre = input("Escribe tu nombre");
-				String licencia = input("Escribe el numero de tu licencia de conduccion");
-				String cedula = input("Ingresa tu Cedula de Ciudadania");
-				String sedeOrigen = input("Ingrese la sede en la que recibirá el carro (norte, centro o sur)");
-				if (sedeOrigen.equalsIgnoreCase("norte"))
-					empresa.loaderInventarioSedeNorte();
-				else if (sedeOrigen.equalsIgnoreCase("sur"))
-					empresa.loaderInventarioSedeSur();
-				else if (sedeOrigen.equalsIgnoreCase("centro"))
-					empresa.loaderInventarioSedeCentro();
-				String sedeDestino = input("Ingrese la sede en la que entregará el carro (norte, centro o sur)");
-				String fechaHoraRecogida = input("Ingrese la fecha y hora de recogida del vehiculo (\"yyyy-MM-dd'T'HH:mm:ss\")");
-				String fechaHoraEntrega = input("Ingrese la fecha y hora de entrega del vehiculo (\"yyyy-MM-dd'T'HH:mm:ss\")");
-				String metodopago = input("Ingrese su metodo de pago (Nequi, Daviplata, Tarjeta de credito, Tarjeta de debito) ");
-				int conducAdicional = Integer.parseInt(input("Ingrese la cantidad de conductores adicionales que manejarán el vehiculo"));
-				System.out.println("******************************");
-				System.out.println("Seguros que ofrece la empresa");
-				System.out.println("1. Seguro basico cuesta 45,000 COP");
-				System.out.println("2. Seguro intermedio cuesta 70,000 COP");
-				System.out.println("3. Seguro completo cuesta 98,000 COP");
-				System.out.println("4. No desea seguro");
-				System.out.println("******************************");
-				String seguros = input("Ingrese el numero del seguro del que está interesado");
-				String tipoVehiculo = input("Ingrese el tipo de vehiculo que desea reservar 'Sedan', 'Coupe', 'Hatchback', 'Pickup' , 'Station Wagon', 'SUV', 'Minivan' ");
-				System.out.println("                                                                                   ");
-				
-				int precioTotal = empresa.CrearReserva(nombre, licencia, cedula, sedeOrigen, sedeDestino, fechaHoraRecogida, fechaHoraEntrega, metodopago,
-										conducAdicional, seguros, tipoVehiculo);
-				double precioTreinta = precioTotal*0.3;
-				System.out.println("******************************");
-				System.out.println("El 30% del precio total que debe pagar ahora es " + String.valueOf(precioTreinta));
-				System.out.println("El precio total del alquiler del vehiculo tipo " + tipoVehiculo + " es de " + Integer.toString(precioTotal));
-				System.out.println("******************************");
-				
-			}
-			else if (continuar.equalsIgnoreCase("2")) {
-				String id = input("Ingresa el ID de la reserva");
-				System.out.println("                                                                                   ");
-				System.out.println("La reserva que usted consulto tiene los siguientes datos (IdReserva,nombre,licencia,cedula,sedeDestino,hora_entrega,tipo_vehiculo,preciofinal)");
-				System.out.println(empresa.ConsultarReserva(id));
-			}
-			
-			}
+		if (checklogin == true && tipouser.equals("cliente")) 
+			return "cliente";
+//			System.out.println("                                                                                   ");
+//			System.out.println("El precio por día para rentar un carro tipo SEDAN o COUPE o HATCHBACK es de $50,000");
+//			System.out.println("El precio por día para rentar un carro tipo SUV o MINIVAN es de $65,000");
+//			System.out.println("El precio por día para rentar un carro tipo PICKUP o STATION WAGON es de $80,000");
+//			System.out.println("                                                                                   ");
+//			System.out.println("1. Realizar una reserva");
+//			System.out.println("2. Consultar una reserva por Id");
+//			String continuar = input("Ingrese la opcion que desea hacer");
+//			
+//			if (continuar.equalsIgnoreCase("1"))  {
+//				String nombre = input("Escribe tu nombre");
+//				String licencia = input("Escribe el numero de tu licencia de conduccion");
+//				String cedula = input("Ingresa tu Cedula de Ciudadania");
+//				String sedeOrigen = input("Ingrese la sede en la que recibirá el carro (norte, centro o sur)");
+//				if (sedeOrigen.equalsIgnoreCase("norte"))
+//					empresa.loaderInventarioSedeNorte();
+//				else if (sedeOrigen.equalsIgnoreCase("sur"))
+//					empresa.loaderInventarioSedeSur();
+//				else if (sedeOrigen.equalsIgnoreCase("centro"))
+//					empresa.loaderInventarioSedeCentro();
+//				String sedeDestino = input("Ingrese la sede en la que entregará el carro (norte, centro o sur)");
+//				String fechaHoraRecogida = input("Ingrese la fecha y hora de recogida del vehiculo (\"yyyy-MM-dd'T'HH:mm:ss\")");
+//				String fechaHoraEntrega = input("Ingrese la fecha y hora de entrega del vehiculo (\"yyyy-MM-dd'T'HH:mm:ss\")");
+//				String metodopago = input("Ingrese su metodo de pago (Nequi, Daviplata, Tarjeta de credito, Tarjeta de debito) ");
+//				int conducAdicional = Integer.parseInt(input("Ingrese la cantidad de conductores adicionales que manejarán el vehiculo"));
+//				System.out.println("******************************");
+//				System.out.println("Seguros que ofrece la empresa");
+//				System.out.println("1. Seguro basico cuesta 45,000 COP");
+//				System.out.println("2. Seguro intermedio cuesta 70,000 COP");
+//				System.out.println("3. Seguro completo cuesta 98,000 COP");
+//				System.out.println("4. No desea seguro");
+//				System.out.println("******************************");
+//				String seguros = input("Ingrese el numero del seguro del que está interesado");
+//				String tipoVehiculo = input("Ingrese el tipo de vehiculo que desea reservar 'Sedan', 'Coupe', 'Hatchback', 'Pickup' , 'Station Wagon', 'SUV', 'Minivan' ");
+//				System.out.println("                                                                                   ");
+//				
+//				int precioTotal = empresa.CrearReserva(nombre, licencia, cedula, sedeOrigen, sedeDestino, fechaHoraRecogida, fechaHoraEntrega, metodopago,
+//										conducAdicional, seguros, tipoVehiculo);
+//				double precioTreinta = precioTotal*0.3;
+//				System.out.println("******************************");
+//				System.out.println("El 30% del precio total que debe pagar ahora es " + String.valueOf(precioTreinta));
+//				System.out.println("El precio total del alquiler del vehiculo tipo " + tipoVehiculo + " es de " + Integer.toString(precioTotal));
+//				System.out.println("******************************");
+//				
+//			}
+//			else if (continuar.equalsIgnoreCase("2")) {
+//				String id = input("Ingresa el ID de la reserva");
+//				System.out.println("                                                                                   ");
+//				System.out.println("La reserva que usted consulto tiene los siguientes datos (IdReserva,nombre,licencia,cedula,sedeDestino,hora_entrega,tipo_vehiculo,preciofinal)");
+//				System.out.println(empresa.ConsultarReserva(id));
+//			}
+//			
+//			}
 		
-		if (checklogin == true && tipouser.equals("administradorl")) {
+		else if (checklogin == true && tipouser.equals("administradorl")) 
+			return "administradorl";
 			
-			System.out.println("Hola Administrador! Que desea hacer...");
-			String opc1 = input("1. Agregar un nuevo empleado a la nómina de mi sede");
-			
-			if (opc1.equals("1")) {
-				String username = input("Cree un login para el empleado");
-				String contraseña = input("Cree una contraseña para el empleado");
-				String name = input("Escriba el nombre del empleado");
-				String id = input("Cree un ID alfanumérico para el empleado");
-				String sede = input("Ingrese la sede en la cual trabajará el nuevo empleado (sur, norte,centro)");
-				System.out.println("                                                                                   ");
-				empresa.CrearEmpleado(username, contraseña, "empleado", name, id, sede);
-				System.out.println("Empleado creado exitosamnte");
-			}
-
-		}
+//			System.out.println("Hola Administrador! Que desea hacer...");
+//			String opc1 = input("1. Agregar un nuevo empleado a la nómina de mi sede");
+//			
+//			if (opc1.equals("1")) {
+//				String username = input("Cree un login para el empleado");
+//				String contraseña = input("Cree una contraseña para el empleado");
+//				String name = input("Escriba el nombre del empleado");
+//				String id = input("Cree un ID alfanumérico para el empleado");
+//				String sede = input("Ingrese la sede en la cual trabajará el nuevo empleado (sur, norte,centro)");
+//				System.out.println("                                                                                   ");
+//				empresa.CrearEmpleado(username, contraseña, "empleado", name, id, sede);
+//				System.out.println("Empleado creado exitosamnte");
+//			}
+//
+//		}
 		
 		
-		if (checklogin == true && tipouser.equals("empleado")) {
+		else if (checklogin == true && tipouser.equals("empleado")) 
+			return "empleado";
 			
-			System.out.println("Hola Empleado! Que desea hacer...");
-
-			System.out.println("1. Desea registrar la entrega de un carro en su sede?");
-			System.out.println("2. Desea consultar una reserva por id?");
-			System.out.println("3. Desea enviar a mantenimiento un vehículo?");
-			System.out.println("4. Desea sacar de mantenimiento un vehículo?");
-	
-			String opc1 = input("Ingrese el numero de la opcion que desea realizar");
-
-			if (opc1.equals("1")) {
-				
-				int id = Integer.parseInt(input("Ingrese el id de la reserva"));
-				String sede = input("Desde que sede recibes el carro?");
-				empresa.RecibirCarro(id, sede);
-				File archivoAEliminar = new File("data/temporal.txt");
-	            archivoAEliminar.delete();
-	            System.out.println("                                                                                   ");
-				System.out.println("Entrega exitosa del carro");
-			}
-			else if (opc1.equals("2")) {
-				
-				String id = input("Ingresa el ID de la reserva");
-				System.out.println("                                                                                   ");
-				System.out.println("La reserva que usted consulto tiene los siguientes datos (IdReserva,nombre,licencia,cedula,sedeDestino,hora_entrega,tipo_vehiculo,preciofinal)");
-				System.out.println(empresa.ConsultarReserva(id));
-				
-				
-
-			}
-			else if (opc1.equals("3")) {
-				
-				String placa = input("Ingresa la placa del carro que enviaras a mantenimeinto");
-				String sede = input("Recuerdanos la sede donde trabajas (norte,sur,centro)");
-				String fechaes = input("¿Para que fecha estimada estara disponible el vehiculo?");
-				empresa.EnviarAMantenimiento(placa, sede, fechaes);
-				System.out.println("                                                                                   ");
-				System.out.println("Enviado exitosamente");
-
-			}
-			
-			else if (opc1.equals("4")) {
-				
-				String placa = input("Ingresa la placa del carro que enviaras a mantenimeinto");
-				String sede = input("Recuerdanos la sede donde trabajas (norte,sur,centro)");
-				empresa.SacarMantenimiento(placa, sede);
-				File archivoAEliminar = new File("data/temporal.txt");
-	            archivoAEliminar.delete();
-	            System.out.println("                                                                                   ");
-				System.out.println("Sacado exitosamente");
-				
-
-			}
-			
-			
-		}
+//			System.out.println("Hola Empleado! Que desea hacer...");
+//
+//			System.out.println("1. Desea registrar la entrega de un carro en su sede?");
+//			System.out.println("2. Desea consultar una reserva por id?");
+//			System.out.println("3. Desea enviar a mantenimiento un vehículo?");
+//			System.out.println("4. Desea sacar de mantenimiento un vehículo?");
+//	
+//			String opc1 = input("Ingrese el numero de la opcion que desea realizar");
+//
+//			if (opc1.equals("1")) {
+//				
+//				int id = Integer.parseInt(input("Ingrese el id de la reserva"));
+//				String sede = input("Desde que sede recibes el carro?");
+//				empresa.RecibirCarro(id, sede);
+//				File archivoAEliminar = new File("data/temporal.txt");
+//	            archivoAEliminar.delete();
+//	            System.out.println("                                                                                   ");
+//				System.out.println("Entrega exitosa del carro");
+//			}
+//			else if (opc1.equals("2")) {
+//				
+//				String id = input("Ingresa el ID de la reserva");
+//				System.out.println("                                                                                   ");
+//				System.out.println("La reserva que usted consulto tiene los siguientes datos (IdReserva,nombre,licencia,cedula,sedeDestino,hora_entrega,tipo_vehiculo,preciofinal)");
+//				System.out.println(empresa.ConsultarReserva(id));
+//				
+//				
+//
+//			}
+//			else if (opc1.equals("3")) {
+//				
+//				String placa = input("Ingresa la placa del carro que enviaras a mantenimeinto");
+//				String sede = input("Recuerdanos la sede donde trabajas (norte,sur,centro)");
+//				String fechaes = input("¿Para que fecha estimada estara disponible el vehiculo?");
+//				empresa.EnviarAMantenimiento(placa, sede, fechaes);
+//				System.out.println("                                                                                   ");
+//				System.out.println("Enviado exitosamente");
+//
+//			}
+//			
+//			else if (opc1.equals("4")) {
+//				
+//				String placa = input("Ingresa la placa del carro que enviaras a mantenimeinto");
+//				String sede = input("Recuerdanos la sede donde trabajas (norte,sur,centro)");
+//				empresa.SacarMantenimiento(placa, sede);
+//				File archivoAEliminar = new File("data/temporal.txt");
+//	            archivoAEliminar.delete();
+//	            System.out.println("                                                                                   ");
+//				System.out.println("Sacado exitosamente");
+//				
+//
+//			}
+//			
+//			
+//		}
 		
-		if (checklogin == true && tipouser.equals("administradorg")) {
+		else if (checklogin == true && tipouser.equals("administradorg")) 
+			return "administradorg";
 			
-			empresa.loaderInventario();
-			System.out.println("¿Que tal jefe? Que desea hacer el dia de hoy...");
-			String opc = input("Escriba 1 para añadir un carro al inventario o 2 para eliminar un carro del invenatrio");
-			if (opc.equals("1")) {
-				String marca = input("Ingrese la marca del nuevo carro");
-				String placa = input("Ingrese la placa del nuevo carro");
-				String modeloCarro = input("Ingrese el modelo del nuevo carro");
-				String color = input("Ingrese el color del nuevo carro");
-				String transmision = input("Ingrese el tipo de transmision del nuevo carro");
-				int capacidad = Integer.parseInt(input("Ingrese la capacidad del nuevo carro"));
-				String tipoMotor = input("Ingrese el tipo de motor del nuevo carro");
-				String tipovehiculo = input("Ingrese el tipo de vehiculo del nuevo carro ('Sedan', 'Coupe', 'Hatchback', 'Pickup' , 'Station Wagon', 'SUV', 'Minivan')");
-				String sedeAnadir = input("Ingrese la sede a la que quiere añadir el nuevo carro (norte,centro,sur)");
-				empresa.AgregarCarro(marca, placa, modeloCarro, color, transmision, capacidad, tipoMotor, tipovehiculo, sedeAnadir);
-				System.out.println("                                                                                   ");
-				System.out.println("Se ha agregado un carro nuevo exitosamente");
-				}
-			else if (opc.equals("2")) {
-				String modeloCarro = input("Ingrese el modelo del carro que desea eliminar");
-				String sede = input("Ingrese la sede del carro que desea elminiar");
-				empresa.EliminarCarro(modeloCarro, sede);
-				System.out.println("                                                                                   ");
-				System.out.println("Se ha elmiminado un carro existormanete");
-				}
-			
-
-		}
-		
+//			empresa.loaderInventario();
+//			System.out.println("¿Que tal jefe? Que desea hacer el dia de hoy...");
+//			String opc = input("Escriba 1 para añadir un carro al inventario o 2 para eliminar un carro del invenatrio");
+//			if (opc.equals("1")) {
+//				String marca = input("Ingrese la marca del nuevo carro");
+//				String placa = input("Ingrese la placa del nuevo carro");
+//				String modeloCarro = input("Ingrese el modelo del nuevo carro");
+//				String color = input("Ingrese el color del nuevo carro");
+//				String transmision = input("Ingrese el tipo de transmision del nuevo carro");
+//				int capacidad = Integer.parseInt(input("Ingrese la capacidad del nuevo carro"));
+//				String tipoMotor = input("Ingrese el tipo de motor del nuevo carro");
+//				String tipovehiculo = input("Ingrese el tipo de vehiculo del nuevo carro ('Sedan', 'Coupe', 'Hatchback', 'Pickup' , 'Station Wagon', 'SUV', 'Minivan')");
+//				String sedeAnadir = input("Ingrese la sede a la que quiere añadir el nuevo carro (norte,centro,sur)");
+//				empresa.AgregarCarro(marca, placa, modeloCarro, color, transmision, capacidad, tipoMotor, tipovehiculo, sedeAnadir);
+//				System.out.println("                                                                                   ");
+//				System.out.println("Se ha agregado un carro nuevo exitosamente");
+//				}
+//			else if (opc.equals("2")) {
+//				String modeloCarro = input("Ingrese el modelo del carro que desea eliminar");
+//				String sede = input("Ingrese la sede del carro que desea elminiar");
+//				empresa.EliminarCarro(modeloCarro, sede);
+//				System.out.println("                                                                                   ");
+//				System.out.println("Se ha elmiminado un carro existormanete");
+//				}
+//			
+//
+//		}
+		else return "error";
 		
 	}
 		
