@@ -23,8 +23,10 @@ public class AdminGeneralInicio extends JFrame implements ActionListener{
 	
 	private JButton btnAnadir;
 	private JButton btnEliminar;
+	Principal principal;
 	
-	public AdminGeneralInicio() {
+	public AdminGeneralInicio(Principal p_principal) {
+		principal = p_principal;
 		setTitle("Bienvenido Jefe!");
 		setResizable( false );
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -84,11 +86,18 @@ public class AdminGeneralInicio extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand( ).equals( "AÑADIR" )) {
+			AñadirCarro nuevo_carro = new AñadirCarro(principal);
+			nuevo_carro.setLocationRelativeTo(null);
+			nuevo_carro.setVisible(true);
 			dispose();
 		}
 		else if (e.getActionCommand( ).equals( "ELIMINAR" )) {
+			EliminarCarro elim = new EliminarCarro(principal);
+			elim.setLocationRelativeTo(null);
+			elim.setVisible(true);
 			dispose();
 		}
+		
 		
 	}
 

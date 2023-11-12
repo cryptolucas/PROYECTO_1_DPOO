@@ -18,3 +18,4 @@ Toyota,AAA018,RAV4,Verde,Automática,5,Híbrido,SUV
 Volkswagen,AAA019,Passat,Plateado,Automática,5,Gasolina,Sedan
 Nissan,AAA020,Murano,Gris,Automática,5,Gasolina,SUV
 Mazda,AAA021,CX-5,Azul,Automática,5,Gasolina,SUVJEEP,ASW454,Grand Cherokee,Negro,Automatica,7,Gasolina,Hatchback
+toyota,HAG876,pradito,vinotinto,mecanica,7,gasolina,Station Wagon

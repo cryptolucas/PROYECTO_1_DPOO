@@ -34,7 +34,6 @@ Chrysler,VWX789,Pacifica,Plata,Automática,7,Híbrido,Minivan
 Nissan,YZD234,Altima,Negro,Automática,5,Gasolina,Sedan
 Mazda,LMN567,MX-5,Rojo,Manual,2,Gasolina,Coupe
 Hyundai,OPQ890,Elantra,Azul,Automática,5,Gasolina,Sedan
-Dodge,RST123,Charger,Plata,Automática,5,Gasolina,Sedan
 Chevrolet,UVW456,Colorado,Rojo,Automática,5,Gasolina,Pickup
 Ford,XYZ789,Escape,Blanco,Automática,5,Gasolina,SUV
 Toyota,ABC012,Highlander,Gris,Automática,7,Híbrido,SUV
@@ -50,7 +49,6 @@ Jeep,AAA007,Wrangler,Amarillo,Manual,4,Gasolina,Minivan
 Nissan,AAA008,Altima,Plateado,Automática,5,Gasolina,Sedan
 Mazda,AAA009,MX-5,Azul,Manual,2,Gasolina,Coupe
 Hyundai,AAA010,Elantra,Rojo,Automática,5,Gasolina,Hatchback
-Dodge,AAA011,Charger,Negro,Automática,5,Gasolina,Pickup
 Kia,AAA012,Soul,Blanco,Manual,5,Gasolina,Station Wagon
 Volvo,AAA013,XC90,Gris,Automática,7,Híbrido,SUV
 Jeep,AAA014,Cherokee,Verde,Automática,5,Gasolina,SUV
@@ -61,3 +59,5 @@ Toyota,AAA018,RAV4,Verde,Automática,5,Híbrido,SUV
 Volkswagen,AAA019,Passat,Plateado,Automática,5,Gasolina,Sedan
 Nissan,AAA020,Murano,Gris,Automática,5,Gasolina,SUV
 Mazda,AAA021,CX-5,Azul,Automática,5,Gasolina,SUV
+ford,XXX7171,FIESTA,MORADO,AUTOMATICA,5,GASOLINA,Sedan
+toyota,HAG876,pradito,vinotinto,mecanica,7,gasolina,Station Wagon

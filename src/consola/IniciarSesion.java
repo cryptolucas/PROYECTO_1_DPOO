@@ -102,7 +102,11 @@ public class IniciarSesion extends JFrame implements ActionListener{
 			}
 			
 			if (tipoUser.equals("cliente")){
-				//llamar a la ventana de cliente
+				
+				MenuCliente menu_cliente = new MenuCliente(principal);
+				menu_cliente.setLocationRelativeTo(null);
+				menu_cliente.setVisible(true);
+				
 				dispose();
 			}
 			else if (tipoUser.equals("administradorl")) {
@@ -116,7 +120,7 @@ public class IniciarSesion extends JFrame implements ActionListener{
 			
 			else if (tipoUser.equals("administradorg")) {
 				JOptionPane.showMessageDialog(null, "Ha iniciado sesion como "+txtLog_In.getText()+". Bienvenido Jefe!", "Inicio Sesión", JOptionPane.INFORMATION_MESSAGE);
-				AdminGeneralInicio adminG = new AdminGeneralInicio();
+				AdminGeneralInicio adminG = new AdminGeneralInicio(principal);
 				adminG.setLocationRelativeTo(null);
 				adminG.setVisible(true);
 				dispose();

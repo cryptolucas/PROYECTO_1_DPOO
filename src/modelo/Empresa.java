@@ -321,7 +321,7 @@ public class Empresa {
 		
 		
 		
-		public int CrearReserva (String nombre, String licencia, String cedula, String sedeOrigen, String sedeDestino, String hora_recogida, String hora_entrega, String metodo_pago,
+		public String CrearReserva (String nombre, String licencia, String cedula, String sedeOrigen, String sedeDestino, String hora_recogida, String hora_entrega, String metodo_pago,
 		         int conductor_adicional, String seguros, String tipo_vehiculo) throws IOException {
 			
 			
@@ -356,9 +356,13 @@ public class Empresa {
 						
 			}	
 			}
-			System.out.println("El id de la reserva es: " + Integer.toString(reserva.getIdReserva()));
-			return preciofinal;
+			//System.out.println("El id de la reserva es: " + Integer.toString(reserva.getIdReserva()));
+			return "<html>El precio final de tu reserva es: " + Integer.toString(preciofinal) + 
+					"  <br> El precio a pagar en la sede (30% del total de tu reserva) es: " + String.valueOf(preciofinal*0.3) +
+					"   <br> El id de la reserva es: " + Integer.toString(reserva.getIdReserva()) + "</html>" ;
 		}
+		
+		
 		
 		
 		

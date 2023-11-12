@@ -9,6 +9,7 @@ import java.awt.LayoutManager;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.swing.JButton;
@@ -31,14 +32,26 @@ public class Principal extends JFrame implements ActionListener {
 	private Aplicacion app;
 	private Empresa empresa;
 	
-	public Principal() {
+	public Principal()   {
 		app = new Aplicacion();
 		empresa = new Empresa();
-		VentanaPrincipal();
+		try {
+			VentanaPrincipal();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 	}
 	
 	
-	public void VentanaPrincipal() {
+	public void VentanaPrincipal() throws FileNotFoundException {
+		empresa.CargarInformacionEmpresa();
+		empresa.loaderInventarioSedeCentro();
+		empresa.loaderInventarioSedeNorte();
+		empresa.loaderInventarioSedeSur();
+
 		setTitle("Bienvenidos a RENTAL PAPIS!");
 		setResizable( false );
 		setLayout((LayoutManager) new FlowLayout(FlowLayout.CENTER));
@@ -122,8 +135,53 @@ public class Principal extends JFrame implements ActionListener {
 		return tipoUser;
 	}
 	
+	public void AgregarCarro(String marca, String placa, String modeloCarro, String color, String transmision, 
+									int capacidad, String tipoMotor, String tipovehiculo, String sede) throws IOException {
+		
+		empresa.AgregarCarro(marca, placa, modeloCarro, color, transmision, capacidad, tipoMotor, tipovehiculo, sede);
+		
+	}
 	
-	public static void main(String[] args)
+	public void EliminarCarro(String modelo, String sede) {
+		empresa.EliminarCarro(modelo, sede);
+	}
+	
+	
+	public String CrearReserva(String nombre, String licencia, String cedula, String sedeOrigen, String sedeDestino, String hora_recogida, String hora_entrega, String metodo_pago,
+		         int conductor_adicional, String seguros, String tipo_vehiculo) throws IOException {
+		
+		return empresa.CrearReserva(nombre, licencia, cedula, sedeOrigen, sedeDestino, hora_recogida, hora_entrega, metodo_pago, conductor_adicional, seguros, tipo_vehiculo);
+	}
+	
+	public String ConsultarReserva(String id) {
+		
+		String str = empresa.ConsultarReserva(id);
+		String[] partes = str.split(",");
+		
+		String ID = partes[0];
+		String nombre = partes[1];
+		String licencia= partes[2];
+		String cedula = partes[3];
+		String sede_destino = partes[4];
+		String fecha_entrega = partes[5];
+		String tipo_veh= partes[6];
+		String preciofinal = partes[7];
+		
+		return "<html>El ID de la reserva es: " + ID + 
+				"  <br> La reserva esta a nombre de: " + nombre +
+				"   <br> La licencia de conducción registrada es:  " + licencia +
+				"  <br> El documento de identidad registrado es: " + cedula +
+				"  <br> La sede donde se entregara el carro es: " + sede_destino +
+				"  <br> La fecha de entrega del vehiculo es: " + fecha_entrega +
+				"  <br> El tipo de vehículo rentado es:  " + tipo_veh +
+				"  <br> El precio final de la reserva es " + preciofinal
+				+ "</html>" ;
+		        	
+		
+	}
+	
+	
+	public static void main(String[] args) 
 	{
 		Principal ventana = new Principal();
 		ventana.setLocationRelativeTo( null );

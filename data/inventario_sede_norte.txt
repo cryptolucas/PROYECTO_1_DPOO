@@ -15,7 +15,7 @@ Volkswagen,JKL567,Golf,Verde,Manual,5,Gasolina,Hatchback
 Nissan,AAA008,Altima,Plateado,Automática,5,Gasolina,Sedan
 Mazda,AAA009,MX-5,Azul,Manual,2,Gasolina,Coupe
 Hyundai,AAA010,Elantra,Rojo,Automática,5,Gasolina,Hatchback
-Dodge,AAA011,Charger,Negro,Automática,5,Gasolina,Pickup
 Kia,AAA012,Soul,Blanco,Manual,5,Gasolina,Station Wagon
 Volvo,AAA013,XC90,Gris,Automática,7,Híbrido,SUV
 Jeep,AAA014,Cherokee,Verde,Automática,5,Gasolina,SUV
+ford,XXX7171,FIESTA,MORADO,AUTOMATICA,5,GASOLINA,Sedan
