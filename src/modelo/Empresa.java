@@ -262,8 +262,8 @@ public class Empresa {
 	
 	
 		public void CrearCliente(String nombre, String correo, String login, String password, String tipoUsuario,
-						String fechaNacimiento, String nacionalidad,int licenciaConduccion, String paisExpedicion, 
-						String fechaVencimientoLicencia, int telefonoContacto, int numeroTarjetaCredito) throws IOException{
+						String fechaNacimiento, String nacionalidad,String licenciaConduccion, String paisExpedicion, 
+						String fechaVencimientoLicencia, String telefonoContacto, String numeroTarjetaCredito) throws IOException{
 			
 			if (tipoUsuario.equals("cliente")){
 			
@@ -470,18 +470,18 @@ public class Empresa {
 		
 		public void EliminarCarro (String modelo, String sede){
 			
-			boolean x = false;
-			
-			while (x==false) {
-			
-			for (Carro carro : inventario.get("Disponible")) {
-            	
-            	if (carro.getModeloCarro().equals(modelo)) {
-            		inventario.get("Disponible").remove(carro);
-            		x = true;
-            		break;}
-			}		
-			}
+//			boolean x = false;
+//			
+//			while (x==false) {
+//			
+//			for (Carro carro : inventario.get("Disponible")) {
+//            	
+//            	if (carro.getModeloCarro().equals(modelo)) {
+//            		inventario.get("Disponible").remove(carro);
+//            		x = true;
+//            		break;}
+//			}		
+//			}
 			
 			
 			try {

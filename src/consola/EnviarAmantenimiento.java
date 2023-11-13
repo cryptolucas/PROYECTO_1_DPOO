@@ -80,7 +80,7 @@ public class EnviarAmantenimiento extends JFrame implements ActionListener{
         panel_central.add(txtfecha);
         
         
-        textsede = new JLabel("Recuerdanos la sede donde te encuentras: ");
+        textsede = new JLabel("<html>Recuerdanos la sede<br> donde te encuentras: </html>");
         textsede.setFont(new Font("Arial", Font.BOLD , 20));
         textsede.setHorizontalAlignment(SwingConstants.CENTER);
         textsede.setForeground( Color.BLACK );

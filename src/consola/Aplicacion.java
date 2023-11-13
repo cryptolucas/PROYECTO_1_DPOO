@@ -78,25 +78,25 @@ public class Aplicacion {
 		String nombre = input("Ingrese su nombre");
 		String login = input("Ingrese el login que desea utilizar");
 		String password = input("Ingrese su password (Recuerde anotarla de forma segura): ");
-		
-		String tipoUsuario = "cliente"; //el q se registra aca es unicamente el cliente..
-		if (tipoUsuario.equalsIgnoreCase("cliente")) {
-			String correo = input("Ingrese su correo");
-			String fechaNacimiento = input("Ingrese su fecha de nacimiento");
-			String nacionalidad = input("Ingrese su nacionalidad");
-			int licenciaConduccion = Integer.parseInt(input("Ingrese su numero de licencia de conduccion"));
-			String paisExpedicion = input("Ingrese el pais de expedicion de la licencia");
-			String fechaVencimientoLicencia = input("Ingrese la fecha de vencimiento de su licencia");
-			int telefonoContacto  = Integer.parseInt(input("Ingrese un numero de telefono de contacto"));
-			int numeroTarjetaCredito = Integer.parseInt(input("Ingrese su numero de la tarjeta de credito"));
-			
-			empresa.CrearCliente(nombre,  correo,  login,  password,  tipoUsuario,
-			 fechaNacimiento,  nacionalidad, licenciaConduccion,  paisExpedicion, 
-			 fechaVencimientoLicencia,  telefonoContacto,  numeroTarjetaCredito);
-			System.out.println("******************************");
-			System.out.println("Cliente creado exitosamente!!");
-			System.out.println("******************************");
-		}
+//		
+//		String tipoUsuario = "cliente"; //el q se registra aca es unicamente el cliente..
+//		if (tipoUsuario.equalsIgnoreCase("cliente")) {
+////			String correo = input("Ingrese su correo");
+////			String fechaNacimiento = input("Ingrese su fecha de nacimiento");
+////			String nacionalidad = input("Ingrese su nacionalidad");
+////			String licenciaConduccion = Integer.parseInt(input("Ingrese su numero de licencia de conduccion"));
+////			String paisExpedicion = input("Ingrese el pais de expedicion de la licencia");
+////			String fechaVencimientoLicencia = input("Ingrese la fecha de vencimiento de su licencia");
+////			String telefonoContacto  = Integer.parseInt(input("Ingrese un numero de telefono de contacto"));
+////			String numeroTarjetaCredito = Integer.parseInt(input("Ingrese su numero de la tarjeta de credito"));
+//			
+//			empresa.CrearCliente(nombre,  correo,  login,  password,  tipoUsuario,
+//			 fechaNacimiento,  nacionalidad, licenciaConduccion,  paisExpedicion, 
+//			 fechaVencimientoLicencia,  telefonoContacto,  numeroTarjetaCredito);
+//			System.out.println("******************************");
+//			System.out.println("Cliente creado exitosamente!!");
+//			System.out.println("******************************");
+//		}
 	}
 			
 			

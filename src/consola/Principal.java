@@ -148,8 +148,8 @@ public class Principal extends JFrame implements ActionListener {
     }
 	
 	public void registrarUsuario(String nombre, String correo, String login, String password, String tipoUsuario,
-			String fechaNacimiento, String nacionalidad,int licenciaConduccion, String paisExpedicion, 
-			String fechaVencimientoLicencia, int telefonoContacto, int numeroTarjetaCredito) throws IOException {
+			String fechaNacimiento, String nacionalidad,String licenciaConduccion, String paisExpedicion, 
+			String fechaVencimientoLicencia, String telefonoContacto, String numeroTarjetaCredito) throws IOException {
 		
 		empresa.CrearCliente(nombre, correo, login, password, tipoUsuario, 
 				fechaNacimiento, nacionalidad, licenciaConduccion, paisExpedicion, 

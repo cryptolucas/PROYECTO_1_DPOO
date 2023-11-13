@@ -64,7 +64,7 @@ public class MenuEmpleado extends JFrame implements ActionListener {
         panel_central.add(boton_consultar);
         
         
-        boton_enviarmant = new JButton("QUIERO ENVIAR UN CARRO A MANTENIMIENTO");
+        boton_enviarmant = new JButton("<html>QUIERO ENVIAR UN<br> CARRO A MANTENIMIENTO</html>");
         boton_enviarmant.setPreferredSize(new Dimension(150, 50));
         boton_enviarmant.setBackground( Color.BLUE );
         boton_enviarmant.setForeground( Color.WHITE );
@@ -72,7 +72,7 @@ public class MenuEmpleado extends JFrame implements ActionListener {
         panel_central.add(boton_enviarmant);
         
         
-        boton_sacarmant = new JButton("QUIERO SACAR DE MANTENIMIENTO UN CARRO");
+        boton_sacarmant = new JButton("<html>QUIERO SACAR DE<br> MANTENIMIENTO UN CARRO</html>");
         boton_sacarmant.setPreferredSize(new Dimension(150, 50));
         boton_sacarmant.setBackground( Color.BLUE );
         boton_sacarmant.setForeground( Color.WHITE );

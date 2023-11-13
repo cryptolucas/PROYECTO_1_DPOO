@@ -171,11 +171,12 @@ public class RegistrarUsuario extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand( ).equals( "REGISTRAR" )) {     
 			try {
-				principal.registrarUsuario(txtNombre.getText(), txtLog_In.getText(), txtPassw.getText(),
-						"Cliente", txtEMail.getText(), txtFechaNac.getText(), txtNacionalidad.getText(),
-						Integer.parseInt(txtLicencia.getText()), txtPaisExpLic.getText(), 
-						txtFechaVenLic.getText(),Integer.parseInt(txtNoTel.getText()), 
-						Integer.parseInt(txtTarjeta.getText()));
+				principal.registrarUsuario(txtNombre.getText(), txtEMail.getText(), 
+						txtLog_In.getText(), txtPassw.getText(), "cliente",
+						txtFechaNac.getText(), txtNacionalidad.getText(),
+						txtLicencia.getText(), txtPaisExpLic.getText(), 
+						txtFechaVenLic.getText(),txtNoTel.getText(), 
+						txtTarjeta.getText());
 				
 				JOptionPane.showMessageDialog(null, "Se registró correctamente a nuestro sistema", 
 						"Gracias por elegirnos", JOptionPane.INFORMATION_MESSAGE);

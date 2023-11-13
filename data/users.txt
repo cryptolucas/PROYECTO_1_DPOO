@@ -17,3 +17,9 @@ lolasvip,loco123,empleado
 rata123,Cliente,loco@gmail.com
 coco123,Cliente,lola@gmail.com
 pepe,Cliente,pepe@gmail.com
+pepepe,Cliente,pepepe
+cami2992,Cliente,cami@gmail.com
+luzma123,Cliente,luzmatabares@hotmail.com
+gama1967,Cliente,germanmejia@gmail.com
+messigod,messi123,cliente
+nuevocaca,caca123,empleado

@@ -8,16 +8,16 @@ public class Cliente extends Usuario{
 	private String correo;
 	private String fechaNacimiento;
 	private String nacionalidad;
-	private int licenciaConduccion; // solo usuario?
+	private String licenciaConduccion; // solo usuario?
 	private String paisExpedicion; // solo usuario?
 	private String fechaVencimientoLicencia; // solo usuario?
-	private int telefonoContacto;
-	private int numeroTarjetaCredito; 
+	private String telefonoContacto;
+	private String numeroTarjetaCredito; 
 	
 	
 	public Cliente(String nombre, String correo, String login, String password, String tipoUsuario,
-						String fechaNacimiento, String nacionalidad,int licenciaConduccion, String paisExpedicion, 
-						String fechaVencimientoLicencia, int telefonoContacto, int numeroTarjetaCredito) {
+						String fechaNacimiento, String nacionalidad, String licenciaConduccion, String paisExpedicion, 
+						String fechaVencimientoLicencia, String telefonoContacto, String numeroTarjetaCredito) {
 		
 		super(login, password, tipoUsuario);
 		this.nombre = nombre;
