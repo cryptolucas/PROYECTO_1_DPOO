@@ -14,3 +14,6 @@ javier123,contrasela,cliente
 empleado213,loca,empleado
 pepeelpana,Cliente,pepe.pe@
 lolasvip,loco123,empleado
+rata123,Cliente,loco@gmail.com
+coco123,Cliente,lola@gmail.com
+pepe,Cliente,pepe@gmail.com

@@ -176,6 +176,10 @@ public class RegistrarUsuario extends JFrame implements ActionListener{
 						Integer.parseInt(txtLicencia.getText()), txtPaisExpLic.getText(), 
 						txtFechaVenLic.getText(),Integer.parseInt(txtNoTel.getText()), 
 						Integer.parseInt(txtTarjeta.getText()));
+				
+				JOptionPane.showMessageDialog(null, "Se registró correctamente a nuestro sistema", 
+						"Gracias por elegirnos", JOptionPane.INFORMATION_MESSAGE);
+				
 			} catch (NumberFormatException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
