@@ -33,8 +33,9 @@ public class MenuEmpleado extends JFrame implements ActionListener {
 		setTitle("Bienvenido Empleado!");
 		setResizable( false );
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setSize(screenSize.width, screenSize.height-50);
+		//Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        //setSize(screenSize.width, screenSize.height-50);
+        setSize(1350,710);
         setLayout(new BorderLayout());
         
         JPanel panel_central = new JPanel();
@@ -45,8 +46,7 @@ public class MenuEmpleado extends JFrame implements ActionListener {
         text1.setFont(new Font("Arial", Font.BOLD, 35));
         text1.setForeground( Color.BLACK );
         text1.setHorizontalAlignment(SwingConstants.CENTER);
-       
-       
+        text1.setPreferredSize(new Dimension(950, 200));
         
         boton_registrar = new JButton("QUIERO REGISTRAR UN CARRO EN MI SEDE");
         boton_registrar.setPreferredSize(new Dimension(150, 50));

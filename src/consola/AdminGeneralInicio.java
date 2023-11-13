@@ -31,23 +31,24 @@ public class AdminGeneralInicio extends JFrame implements ActionListener{
 		setTitle("Bienvenido Jefe!");
 		setResizable( false );
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setSize(screenSize.width, screenSize.height-50);
+		//Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        //setSize(screenSize.width, screenSize.height-50);
+		setSize(1350,710);
         setLayout(new BorderLayout());
         
         JPanel pnlInic = new JPanel();
-        pnlInic.setLayout(new GridLayout(4,1,10,50));
+        pnlInic.setLayout(new GridLayout(6,1,10,50));
 		
 		
         lblTexto = new JLabel("¿Que desea hacer el dia de hoy?");
         lblTexto.setFont(new Font("Arial", Font.BOLD, 35));
         lblTexto.setForeground( Color.BLACK );
         lblTexto.setHorizontalAlignment(SwingConstants.CENTER);
-        pnlInic.add(lblTexto);
+        lblTexto.setPreferredSize(new Dimension(850, 150));
         add(pnlInic, BorderLayout.CENTER);
         
         btnAnadir = new JButton("AÑADIR UN CARRO AL INVENTARIO");
-        btnAnadir.setPreferredSize(new Dimension(150, 50));
+        btnAnadir.setPreferredSize(new Dimension(150, 100));
         btnAnadir.setBackground( Color.BLUE );
         btnAnadir.setForeground( Color.WHITE );
         btnAnadir.setHorizontalAlignment(SwingConstants.CENTER);
@@ -57,25 +58,44 @@ public class AdminGeneralInicio extends JFrame implements ActionListener{
         btnAnadir.setActionCommand("AÑADIR");
         
         btnEliminar = new JButton("ELIMINAR UN CARRO DEL INVENTARIO");
-        btnEliminar.setPreferredSize(new Dimension(150, 50));
+        btnEliminar.setPreferredSize(new Dimension(150, 100));
         btnEliminar.setBackground( Color.BLUE );
         btnEliminar.setForeground( Color.WHITE );
         btnEliminar.setHorizontalAlignment(SwingConstants.CENTER);
         pnlInic.add(btnEliminar);
         
-        btn_grafica = new JButton("VER GRÁFICA DISPONIBILIDAD SEDES");
-        btn_grafica.setPreferredSize(new Dimension(150, 50));
+        btnEliminar.addActionListener(this);
+        btnEliminar.setActionCommand("ELIMINAR");
+        
+        btn_grafica = new JButton("VER GRÁFICA DISPONIBILIDAD SEDE NORTE");
+        btn_grafica.setPreferredSize(new Dimension(150, 100));
         btn_grafica.setBackground( Color.BLUE );
         btn_grafica.setForeground( Color.WHITE );
         btn_grafica.setHorizontalAlignment(SwingConstants.CENTER);
         pnlInic.add(btn_grafica);
         
-        btnEliminar.addActionListener(this);
-        btnEliminar.setActionCommand("ELIMINAR");
+        btn_grafica.addActionListener(this);
+        btn_grafica.setActionCommand("graphNorte");
         
+        btn_grafica = new JButton("VER GRÁFICA DISPONIBILIDAD SEDE SUR");
+        btn_grafica.setPreferredSize(new Dimension(150, 100));
+        btn_grafica.setBackground( Color.BLUE );
+        btn_grafica.setForeground( Color.WHITE );
+        btn_grafica.setHorizontalAlignment(SwingConstants.CENTER);
+        pnlInic.add(btn_grafica);
         
         btn_grafica.addActionListener(this);
-        btn_grafica.setActionCommand("graph");
+        btn_grafica.setActionCommand("graphSur");
+        
+        btn_grafica = new JButton("VER GRÁFICA DISPONIBILIDAD SEDE CENTRO");
+        btn_grafica.setPreferredSize(new Dimension(150, 100));
+        btn_grafica.setBackground( Color.BLUE );
+        btn_grafica.setForeground( Color.WHITE );
+        btn_grafica.setHorizontalAlignment(SwingConstants.CENTER);
+        pnlInic.add(btn_grafica);
+        
+        btn_grafica.addActionListener(this);
+        btn_grafica.setActionCommand("graphCentro");
         
         
         
@@ -88,12 +108,13 @@ public class AdminGeneralInicio extends JFrame implements ActionListener{
         add(panelVentanaPrincipalIzq, BorderLayout.WEST);
         
         JPanel panelVentanaPrincipalArr = new JPanel();
-        panelVentanaPrincipalArr.add(Box.createRigidArea(new Dimension(250, 200)));
+        panelVentanaPrincipalArr.add(lblTexto);
         add(panelVentanaPrincipalArr, BorderLayout.NORTH);
-        		
+        
         JPanel panelVentanaPrincipalAba = new JPanel();
-        panelVentanaPrincipalAba.add(Box.createRigidArea(new Dimension(250, 200)));
+        panelVentanaPrincipalAba.add(Box.createRigidArea(new Dimension(250, 80)));
         add(panelVentanaPrincipalAba, BorderLayout.SOUTH);
+        		
 		
 	}
 
@@ -112,11 +133,27 @@ public class AdminGeneralInicio extends JFrame implements ActionListener{
 			dispose();
 		}
 		
-		else if (e.getActionCommand( ).equals( "graph" )) {
-			GraficaDisponibilidad d = new GraficaDisponibilidad(principal);
-			d.setLocationRelativeTo(null);
-			d.setVisible(true);
-			dispose();
+		else if (e.getActionCommand( ).equals( "graphNorte" )) {
+			GraficasAdicional g = new GraficasAdicional(principal);
+			g.setLocationRelativeTo(null);
+			g.setVisible(true);
+			//dispose();
+			
+		}
+		
+		else if (e.getActionCommand( ).equals( "graphSur" )) {
+			MostrarGraficaSur s = new MostrarGraficaSur(principal);
+			s.setLocationRelativeTo(null);
+			s.setVisible(true);
+			//dispose();
+			
+		}
+		
+		else if (e.getActionCommand( ).equals( "graphCentro" )) {
+			MostrarGraficaCentro c = new MostrarGraficaCentro(principal);
+			c.setLocationRelativeTo(null);
+			c.setVisible(true);
+			//dispose();
 			
 		}
 		

@@ -51,8 +51,9 @@ public class EnviarAmantenimiento extends JFrame implements ActionListener{
     	setTitle("Enviar un vehiculo a mantenimiento...");
 		setResizable( false );
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setSize(screenSize.width, screenSize.height-50);
+		//Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        //setSize(screenSize.width, screenSize.height-50);
+        setSize(1350,710);
         setLayout(new BorderLayout());
         
         
@@ -139,6 +140,14 @@ public class EnviarAmantenimiento extends JFrame implements ActionListener{
         panelVentanaPrincipalIzq.add(Box.createRigidArea(new Dimension(250, 250)));
         add(panelVentanaPrincipalIzq, BorderLayout.WEST);
         
+        JPanel panelVentanaPrincipalAba = new JPanel();
+        panelVentanaPrincipalAba.add(Box.createRigidArea(new Dimension(250, 100)));
+        add(panelVentanaPrincipalAba, BorderLayout.SOUTH);
+        
+        JPanel panelVentanaPrincipalArr = new JPanel();
+        panelVentanaPrincipalArr.add(Box.createRigidArea(new Dimension(250, 100)));
+        add(panelVentanaPrincipalArr, BorderLayout.NORTH);
+        
         buttonGroup = new ButtonGroup();
         buttonGroup.add(checkBoxCentro);  
         buttonGroup.add(checkNorte); 
@@ -164,6 +173,9 @@ public class EnviarAmantenimiento extends JFrame implements ActionListener{
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+				JOptionPane.showMessageDialog(null, "ERROR!", 
+						"ERROR", JOptionPane.ERROR_MESSAGE);
+				dispose();
 			}
 		}
 		

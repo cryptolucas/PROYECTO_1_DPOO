@@ -49,8 +49,9 @@ public class RegistrarPorEmpleados extends JFrame implements ActionListener{
 		setTitle("Registrar la entrega de un vehículo en la sede...");
 		setResizable( false );
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setSize(screenSize.width, screenSize.height-50);
+		//Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        //setSize(screenSize.width, screenSize.height-50);
+        setSize(1350,710);
         setLayout(new BorderLayout());
         
         
@@ -68,7 +69,7 @@ public class RegistrarPorEmpleados extends JFrame implements ActionListener{
         panel_central.add(texto_id);
         
         
-        textsede = new JLabel("Escoge la sede donde recibes el automovil : ");
+        textsede = new JLabel("<html>Escoge la sede donde<br>recibes el automovil :</html>");
         textsede.setFont(new Font("Arial", Font.BOLD , 20));
         textsede.setHorizontalAlignment(SwingConstants.CENTER);
         textsede.setForeground( Color.BLACK );
@@ -129,6 +130,14 @@ public class RegistrarPorEmpleados extends JFrame implements ActionListener{
         panelVentanaPrincipalIzq.add(Box.createRigidArea(new Dimension(250, 250)));
         add(panelVentanaPrincipalIzq, BorderLayout.WEST);
         
+        JPanel panelVentanaPrincipalAba = new JPanel();
+        panelVentanaPrincipalAba.add(Box.createRigidArea(new Dimension(250, 100)));
+        add(panelVentanaPrincipalAba, BorderLayout.SOUTH);
+        
+        JPanel panelVentanaPrincipalArr = new JPanel();
+        panelVentanaPrincipalArr.add(Box.createRigidArea(new Dimension(250, 100)));
+        add(panelVentanaPrincipalArr, BorderLayout.NORTH);
+        
         buttonGroup = new ButtonGroup();
         buttonGroup.add(checkBoxCentro);  
         buttonGroup.add(checkNorte); 
@@ -153,6 +162,9 @@ public class RegistrarPorEmpleados extends JFrame implements ActionListener{
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+				JOptionPane.showMessageDialog(null, "ERROR!", 
+						"ERROR", JOptionPane.ERROR_MESSAGE);
+				dispose();
 			}
 			
 		}

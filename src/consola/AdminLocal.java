@@ -56,8 +56,9 @@ public class AdminLocal extends JFrame implements ActionListener{
 		setTitle("Agregar empleado al sistema");
 		setResizable( false );
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setSize(screenSize.width, screenSize.height-50);
+		//Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        //setSize(screenSize.width, screenSize.height-50);
+        setSize(1350,710);
         setLayout(new BorderLayout());
         
         
@@ -66,7 +67,7 @@ public class AdminLocal extends JFrame implements ActionListener{
         titulo.setFont(new Font("Arial", Font.BOLD , 33));
         titulo.setHorizontalAlignment(SwingConstants.CENTER);
         titulo.setForeground( Color.BLACK );
-        titulo.setPreferredSize(new Dimension(550, 50));
+        titulo.setPreferredSize(new Dimension(550, 100));
         panel_norte.add(titulo);
         
         
@@ -195,6 +196,9 @@ public class AdminLocal extends JFrame implements ActionListener{
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+				JOptionPane.showMessageDialog(null, "ERROR!", 
+						"ERROR", JOptionPane.ERROR_MESSAGE);
+				dispose();
 			}
 			
 		}

@@ -14,6 +14,7 @@ import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -54,11 +55,10 @@ public class RegistrarUsuario extends JFrame implements ActionListener{
 		principal = pPrincipal;
 		setTitle("Registrar Usuario");
 		setResizable( false );
-		//setLayout(new FlowLayout( FlowLayout.CENTER ));
 		setLayout(new GridLayout(12, 2));
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setSize(screenSize.width, screenSize.height-50);
-		//setSize(950,650);
+		//Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        //setSize(screenSize.width, screenSize.height-50);
+        setSize(1350,710);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         lblNombre = new JLabel("Nombre");
@@ -179,14 +179,17 @@ public class RegistrarUsuario extends JFrame implements ActionListener{
 			} catch (NumberFormatException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+				JOptionPane.showMessageDialog(null, "ERROR!", 
+						"ERROR", JOptionPane.ERROR_MESSAGE);
+				dispose();
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+				JOptionPane.showMessageDialog(null, "ERROR!", 
+						"ERROR", JOptionPane.ERROR_MESSAGE);
+				dispose();
 			}
         	dispose();
-            Principal principal = new Principal();
-            principal.setLocationRelativeTo(null);
-            principal.setVisible(true);
         }
 		
 	}

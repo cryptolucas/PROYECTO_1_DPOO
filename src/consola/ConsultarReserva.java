@@ -34,8 +34,9 @@ public class ConsultarReserva extends JFrame implements ActionListener{
 		setTitle("Consultar Mi Reserva...");
 		setResizable( false );
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setSize(screenSize.width, screenSize.height-50);
+		//Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        //setSize(screenSize.width, screenSize.height-50);
+        setSize(1350,710);
         setLayout(new BorderLayout());
         
         
@@ -74,11 +75,11 @@ public class ConsultarReserva extends JFrame implements ActionListener{
         add(panelVentanaPrincipalIzq, BorderLayout.WEST);
         
         JPanel panelVentanaPrincipalArr = new JPanel();
-        panelVentanaPrincipalArr.add(Box.createRigidArea(new Dimension(250, 300)));
+        panelVentanaPrincipalArr.add(Box.createRigidArea(new Dimension(250, 250)));
         add(panelVentanaPrincipalArr, BorderLayout.NORTH);
         
         JPanel panelQQ = new JPanel();
-        panelQQ.add(Box.createRigidArea(new Dimension(250, 300)));
+        panelQQ.add(Box.createRigidArea(new Dimension(250, 250)));
         add(panelQQ, BorderLayout.SOUTH);
 		
         add(panel_central, BorderLayout.CENTER);
@@ -87,11 +88,17 @@ public class ConsultarReserva extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if ("consultar".equals(e.getActionCommand())){
-			
+			try {
 			JOptionPane.showMessageDialog(null, principal.ConsultarReserva(texto_id.getText()),
 					"Consultar Reserva", JOptionPane.INFORMATION_MESSAGE);
 			
-			dispose();
+			dispose();}
+			catch (Exception e1) {
+				e1.printStackTrace();
+				JOptionPane.showMessageDialog(null, "ERROR!", 
+						"ERROR", JOptionPane.ERROR_MESSAGE);
+				dispose();
+			}
 			
 		}
 		

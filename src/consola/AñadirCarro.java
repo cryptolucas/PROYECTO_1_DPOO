@@ -85,8 +85,9 @@ public class AñadirCarro extends JFrame implements ActionListener {
 		setTitle("Añadir Carro al Inventario...");
 		setResizable( false );
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setSize(screenSize.width, screenSize.height-50);
+		//Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        //setSize(screenSize.width, screenSize.height-50);
+        setSize(1350,710);
         setLayout(new BorderLayout());
         
         JPanel panel_izq = new JPanel();
@@ -337,6 +338,9 @@ public class AñadirCarro extends JFrame implements ActionListener {
 			} catch (NumberFormatException | IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+				JOptionPane.showMessageDialog(null, "ERROR!", 
+						"ERROR", JOptionPane.ERROR_MESSAGE);
+				dispose();
 			}
 		}
 	}

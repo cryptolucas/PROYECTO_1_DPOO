@@ -55,8 +55,9 @@ public class EliminarCarro extends JFrame implements ActionListener {
 		setTitle("Eliminar Carro del Inventario");
 		setResizable( false );
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setSize(screenSize.width, screenSize.height-50);
+		//Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        //setSize(screenSize.width, screenSize.height-50);
+        setSize(1350,710);
         setLayout(new BorderLayout());
         
         JPanel panel_izq = new JPanel();
@@ -66,7 +67,7 @@ public class EliminarCarro extends JFrame implements ActionListener {
         
         
         lblTexto1 = new JLabel("Selecciona la sede de la que eliminará el carro: ");
-        lblTexto1.setFont(new Font("Arial", Font.BOLD, 15));
+        lblTexto1.setFont(new Font("Arial", Font.BOLD, 18));
         lblTexto1.setForeground( Color.BLACK );
         lblTexto1.setHorizontalAlignment(SwingConstants.CENTER);
         panel_izq.add(lblTexto1);
@@ -106,12 +107,11 @@ public class EliminarCarro extends JFrame implements ActionListener {
         
         
         lblTexto2 = new JLabel("Ingrese el nombre del modelo del carro a eliminar: ");
-        lblTexto2.setFont(new Font("Arial", Font.BOLD, 40));
+        lblTexto2.setFont(new Font("Arial", Font.BOLD, 18));
         lblTexto2.setForeground( Color.BLACK );
         lblTexto2.setHorizontalAlignment(SwingConstants.CENTER);
         panel_der.add(lblTexto2);
-        
-        
+                
         modelo = new JTextField("");
         panel_der.add(modelo);
         
@@ -119,7 +119,7 @@ public class EliminarCarro extends JFrame implements ActionListener {
                
 
         boton_eliminar = new JButton("ELIMINAR VEHICULO");
-        boton_eliminar.setPreferredSize(new Dimension(150, 50));
+        boton_eliminar.setPreferredSize(new Dimension(50, 50));
         boton_eliminar.setBackground( Color.BLUE );
         boton_eliminar.setForeground( Color.WHITE );
         panel_der.add(boton_eliminar);
@@ -130,10 +130,6 @@ public class EliminarCarro extends JFrame implements ActionListener {
         buttonGroup.add(checkNorte); 
         buttonGroup.add(checkSur); 
         
-      
-        
-        
-        
         add(panel_der, BorderLayout.EAST);
         
         boton_eliminar.addActionListener(this);
@@ -141,8 +137,16 @@ public class EliminarCarro extends JFrame implements ActionListener {
         
         
         JPanel panel_libre = new JPanel();
-        panel_libre.add(Box.createRigidArea(new Dimension(350, 250)));
+        panel_libre.add(Box.createRigidArea(new Dimension(50, 250)));
         add(panel_libre, BorderLayout.CENTER);
+        
+        JPanel panelVentanaPrincipalAba = new JPanel();
+        panelVentanaPrincipalAba.add(Box.createRigidArea(new Dimension(250, 200)));
+        add(panelVentanaPrincipalAba, BorderLayout.NORTH);
+        
+        JPanel panelVentanaPrincipalArr = new JPanel();
+        panelVentanaPrincipalArr.add(Box.createRigidArea(new Dimension(250, 200)));
+        add(panelVentanaPrincipalArr, BorderLayout.SOUTH);
         
        
         setLocationRelativeTo(null);
@@ -166,6 +170,9 @@ public class EliminarCarro extends JFrame implements ActionListener {
 			} catch (NumberFormatException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+				JOptionPane.showMessageDialog(null, "ERROR!", 
+						"ERROR", JOptionPane.ERROR_MESSAGE);
+				dispose();
 			}
 		}
 	}

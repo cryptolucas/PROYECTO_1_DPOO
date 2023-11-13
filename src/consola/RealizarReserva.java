@@ -101,8 +101,9 @@ public class RealizarReserva extends JFrame implements ActionListener {
 		setTitle("Realizar Mi Reserva...");
 		setResizable( false );
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setSize(screenSize.width, screenSize.height-50);
+		//Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        //setSize(screenSize.width, screenSize.height-50);
+        setSize(1350,710);
         setLayout(new BorderLayout());
         
         JPanel panel_principal = new JPanel();
@@ -174,7 +175,8 @@ public class RealizarReserva extends JFrame implements ActionListener {
         
        
         
-        lblFecha1 = new JLabel("Escribe la fecha de recogida:   'yyyy-MM-dd'T'HH:mm:ss' ");
+        lblFecha1 = new JLabel("<html>Escribe la fecha de recogida:   'yyyy-MM-dd'T'HH:mm:ss'<br>"
+        						+ "Ejemplo (2023-05-23T15:30:00)</html>");
         lblFecha1.setFont(new Font("Arial", Font.BOLD, 15));
         lblFecha1.setForeground( Color.BLACK );
         lblFecha1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -182,7 +184,8 @@ public class RealizarReserva extends JFrame implements ActionListener {
         txtFecha1 = new JTextField( "" );
         panel_norte.add(txtFecha1);
         
-        lblFecha2 = new JLabel("Escribe la fecha de entrega en la sede:   'yyyy-MM-dd'T'HH:mm:ss' ");
+        lblFecha2 = new JLabel("<html>Escribe la fecha de entrega en la sede:   'yyyy-MM-dd'T'HH:mm:ss'<br>"
+        						+ "Ejemplo (2023-05-23T15:30:00)</html>");
         lblFecha2.setFont(new Font("Arial", Font.BOLD, 15));
         lblFecha2.setForeground( Color.BLACK );
         lblFecha2.setHorizontalAlignment(SwingConstants.CENTER);
@@ -404,6 +407,9 @@ public class RealizarReserva extends JFrame implements ActionListener {
 			} catch (HeadlessException | NumberFormatException | IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+				JOptionPane.showMessageDialog(null, "ERROR!", 
+						"ERROR", JOptionPane.ERROR_MESSAGE);
+				dispose();
 			}
 					
 		}

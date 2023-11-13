@@ -18,7 +18,7 @@ import java.io.File;
 
 
 
-public class GraficaDisponibilidad extends JPanel {
+public class GraficaSur extends JPanel {
 
 	private List<String> listaCentro;
     private List<String> listaNorte;
@@ -26,14 +26,14 @@ public class GraficaDisponibilidad extends JPanel {
     
     private Principal principal;
 
-    public GraficaDisponibilidad(Principal p_principal) {
+    public GraficaSur(Principal p_principal) {
         principal = p_principal;
         procesarArchivo("data/reservados.txt");
     }
 
     public void paint(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        g2d.setColor(Color.BLUE);
+        g2d.setColor(Color.RED);
 
         // Ajustar el origen para tener espacio para los títulos y etiquetas
         int yOffset = 50;
@@ -53,7 +53,7 @@ public class GraficaDisponibilidad extends JPanel {
         Map<String, Integer> conteoPorMes = new HashMap<>();
 
         // Analizar cada fecha en los datos
-        for (String dato : listaCentro) {
+        for (String dato : listaSur) {
             String[] elementos = dato.split(",");
             if (elementos.length >= 7) {
                 String fechaStr = elementos[5];

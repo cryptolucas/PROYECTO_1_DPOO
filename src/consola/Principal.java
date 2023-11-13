@@ -1,10 +1,12 @@
 package consola;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.LayoutManager;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -13,6 +15,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import javax.swing.Box;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -28,6 +32,7 @@ public class Principal extends JFrame implements ActionListener {
 	private JPanel panelVentanaPrincipal;
 	private JLabel text1;
 	private JLabel text2;
+	private JLabel image2;
 	private JButton botonLog_In;
 	private JButton botonReg;
 	private Aplicacion app;
@@ -55,36 +60,39 @@ public class Principal extends JFrame implements ActionListener {
 
 		setTitle("Bienvenidos a RENTAL PAPIS!");
 		setResizable( false );
-		setLayout((LayoutManager) new FlowLayout(FlowLayout.CENTER));
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setSize(screenSize.width, screenSize.height-50);
-        //setSize(950,650);
+		//setLayout((LayoutManager) new FlowLayout(FlowLayout.CENTER));
+		setLayout(new BorderLayout());
+		//Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        //setSize(screenSize.width, screenSize.height-50);
+        setSize(1350,710);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         JPanel panelVentanaPrincipal = new JPanel();
-        panelVentanaPrincipal.setLayout(new GridLayout(4,1, 200, 150));
-
-        text1 = new JLabel("RENTAL PAPIS");
-        text1.setFont(new Font("Arial", Font.BOLD, 40));
-        text1.setHorizontalAlignment(SwingConstants.CENTER);
-        text1.setForeground( Color.BLACK );
-        panelVentanaPrincipal.add(text1);
+        panelVentanaPrincipal.setLayout(new GridLayout(3,1, 80, 80));
         
-        text2 = new JLabel("Te invitamos a escoger una de las siguientes opciones");
+        
+        ImageIcon icono1 = new ImageIcon("data/rentalPapis.jpg");
+        image2 = new JLabel((new ImageIcon(icono1.getImage().getScaledInstance(850, 200, Image.SCALE_SMOOTH))));
+        //panelVentanaPrincipal.add(image2);
+
+        text1 = new JLabel("");
+        //panelVentanaPrincipal.add(text1);
+        
+        text2 = new JLabel("<html>Te invitamos a escoger una<br>de las siguientes opciones</html>");
         text2.setFont(new Font("Arial", Font.BOLD, 35));
         text2.setForeground( Color.BLACK );
         text2.setHorizontalAlignment(SwingConstants.CENTER);
+        text2.setPreferredSize(new Dimension(800,200));
         panelVentanaPrincipal.add(text2);
         
-        
         botonLog_In = new JButton("Iniciar seción con LOG-IN");
-        botonLog_In.setPreferredSize(new Dimension(150, 50));
+        botonLog_In.setPreferredSize(new Dimension(150, 20));
         botonLog_In.setBackground( Color.BLUE );
         botonLog_In.setForeground( Color.WHITE );
         panelVentanaPrincipal.add(botonLog_In);
         
         botonReg = new JButton("REGISTRARME, soy usuario nuevo");
-        botonReg.setPreferredSize(new Dimension(150, 50));
+        botonReg.setPreferredSize(new Dimension(150, 20));
         botonReg.setBackground( Color.BLUE );
         botonReg.setForeground( Color.WHITE );
         panelVentanaPrincipal.add(botonReg);
@@ -95,8 +103,25 @@ public class Principal extends JFrame implements ActionListener {
         botonReg.addActionListener(this);
         botonReg.setActionCommand("REGISTRAR");
         
-        add(panelVentanaPrincipal);
-        //pack();
+        add(panelVentanaPrincipal, BorderLayout.CENTER);
+        
+        JPanel panelVentanaPrincipalIzq = new JPanel();
+        panelVentanaPrincipalIzq.add(Box.createRigidArea(new Dimension(300, 250)));
+        add(panelVentanaPrincipalIzq, BorderLayout.WEST);
+
+        JPanel panelVentanaPrincipalDer = new JPanel();
+        panelVentanaPrincipalDer.add(Box.createRigidArea(new Dimension(300, 250)));
+        add(panelVentanaPrincipalDer, BorderLayout.EAST);
+        
+        JPanel panelVentanaPrincipalAba = new JPanel();
+        panelVentanaPrincipalAba.add(Box.createRigidArea(new Dimension(250, 60)));
+        add(panelVentanaPrincipalAba, BorderLayout.SOUTH);
+        
+        JPanel panelVentanaPrincipalArr = new JPanel();
+        panelVentanaPrincipalArr.add(image2);
+        panelVentanaPrincipalArr.add(Box.createRigidArea(new Dimension(0, 25)));
+        add(panelVentanaPrincipalArr, BorderLayout.NORTH);
+        
         setLocationRelativeTo(null);
         setVisible(true);
 	}
