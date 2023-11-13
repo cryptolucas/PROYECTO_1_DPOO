@@ -110,11 +110,20 @@ public class IniciarSesion extends JFrame implements ActionListener{
 				dispose();
 			}
 			else if (tipoUser.equals("administradorl")) {
+				
+				AdminLocal adminl = new AdminLocal(principal);
+				adminl.setLocationRelativeTo(null);
+				adminl.setVisible(true);
+				
 				dispose();
 			}
 			
 			else if (tipoUser.equals("empleado")) {
-				//FALTO EL EMPLEADO JAJAJA
+				
+				MenuEmpleado menu_emple = new MenuEmpleado(principal);
+				menu_emple.setLocationRelativeTo(null);
+				menu_emple.setVisible(true);
+				
 				dispose();
 			}
 			

@@ -23,6 +23,7 @@ public class AdminGeneralInicio extends JFrame implements ActionListener{
 	
 	private JButton btnAnadir;
 	private JButton btnEliminar;
+	private JButton btn_grafica;
 	Principal principal;
 	
 	public AdminGeneralInicio(Principal p_principal) {
@@ -35,7 +36,7 @@ public class AdminGeneralInicio extends JFrame implements ActionListener{
         setLayout(new BorderLayout());
         
         JPanel pnlInic = new JPanel();
-        pnlInic.setLayout(new GridLayout(3,1,10,50));
+        pnlInic.setLayout(new GridLayout(4,1,10,50));
 		
 		
         lblTexto = new JLabel("¿Que desea hacer el dia de hoy?");
@@ -62,8 +63,21 @@ public class AdminGeneralInicio extends JFrame implements ActionListener{
         btnEliminar.setHorizontalAlignment(SwingConstants.CENTER);
         pnlInic.add(btnEliminar);
         
+        btn_grafica = new JButton("VER GRÁFICA DISPONIBILIDAD SEDES");
+        btn_grafica.setPreferredSize(new Dimension(150, 50));
+        btn_grafica.setBackground( Color.BLUE );
+        btn_grafica.setForeground( Color.WHITE );
+        btn_grafica.setHorizontalAlignment(SwingConstants.CENTER);
+        pnlInic.add(btn_grafica);
+        
         btnEliminar.addActionListener(this);
         btnEliminar.setActionCommand("ELIMINAR");
+        
+        
+        btn_grafica.addActionListener(this);
+        btn_grafica.setActionCommand("graph");
+        
+        
         
         JPanel panelVentanaPrincipalDere = new JPanel();
         panelVentanaPrincipalDere.add(Box.createRigidArea(new Dimension(350, 250)));
@@ -98,6 +112,13 @@ public class AdminGeneralInicio extends JFrame implements ActionListener{
 			dispose();
 		}
 		
+		else if (e.getActionCommand( ).equals( "graph" )) {
+			GraficaDisponibilidad d = new GraficaDisponibilidad(principal);
+			d.setLocationRelativeTo(null);
+			d.setVisible(true);
+			dispose();
+			
+		}
 		
 	}
 

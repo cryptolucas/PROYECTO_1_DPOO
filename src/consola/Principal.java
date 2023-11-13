@@ -9,6 +9,7 @@ import java.awt.LayoutManager;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -178,6 +179,32 @@ public class Principal extends JFrame implements ActionListener {
 				+ "</html>" ;
 		        	
 		
+	}
+	
+	public void RegistrarEntrega(String id, String sede) throws IOException {
+		
+		empresa.RecibirCarro(Integer.parseInt(id), sede);
+		File archivoAEliminar = new File("data/temporal.txt");
+        archivoAEliminar.delete();
+	}
+	
+	public void EnviarMantenimiento(String placa, String sede, String fecha) throws IOException {
+		empresa.EnviarAMantenimiento(placa, sede, fecha);
+		
+	}
+	
+	public void SacarMantenimiento(String placa, String sede) throws IOException {
+		
+		empresa.SacarMantenimiento(placa, sede);
+		File archivoAEliminar = new File("data/temporal.txt");
+		archivoAEliminar.delete();
+	}
+	
+	
+	public void CrearEmpleado(String login, String password, String tipoUsuario, 
+			String nombre, String id, String sede) throws IOException {
+		
+		empresa.CrearEmpleado(login, password, tipoUsuario, nombre, id, sede);
 	}
 	
 	

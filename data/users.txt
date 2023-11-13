@@ -13,3 +13,4 @@ empleadoSantiago,santi456,empleado
 javier123,contrasela,cliente
 empleado213,loca,empleado
 pepeelpana,Cliente,pepe.pe@
+lolasvip,loco123,empleado
