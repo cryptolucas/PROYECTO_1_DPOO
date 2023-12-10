@@ -1,9 +1,11 @@
 package modelo;
 
+import com.itextpdf.text.Image;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -360,6 +362,42 @@ public class Empresa {
 						
 			}	
 			}
+			
+			 Document documento = new Document();
+
+		        try {
+		            // Crear el archivo PDF
+		            PdfWriter.getInstance(documento, new FileOutputStream("FACTURA_" + Integer.toString(reserva.getIdReserva()) + ".pdf") );
+
+		            // Abrir el documento para escribir
+		            documento.open();
+
+		            // Agregar contenido al PDF
+		            documento.add(new Paragraph("RESUMEN FACTURA"));
+		            documento.add(new Paragraph("PRECIO FINAL A PAGAR: " + "$" + Integer.toString(preciofinal)));
+		            documento.add(new Paragraph("PRECIO A PAGAR EN SEDE (30% DEL TOTAL) " + "$" +  String.valueOf(preciofinal*0.3)));
+		            documento.add(new Paragraph("EL ID DE TU RESERVA ES: " + Integer.toString(reserva.getIdReserva())));
+		            documento.add(new Paragraph("---------------------------------------------------"));
+		            documento.add(new Paragraph("---------------------------------------------------"));
+		            documento.add(new Paragraph("---------------------------------------------------"));
+		            documento.add(new Paragraph("GRACIAS POR ELEGIR A RENTAL PAPIS!!!"));
+		            documento.add(new Paragraph("Te deseamos la mejor navidad..."));
+		            
+		            documento.add(new Paragraph("Firma Administrador Germán Romero (CR7): "));
+		            
+		            Image imagen = Image.getInstance("data/firma_bicho.jpg");
+		            documento.add(imagen);
+		            
+		            
+
+		            // Cerrar el documento
+		            documento.close();
+
+		            
+		        } catch (Exception e) {
+		            e.printStackTrace();
+		        }
+			
 			//System.out.println("El id de la reserva es: " + Integer.toString(reserva.getIdReserva()));
 			return "<html>El precio final de tu reserva es: " + Integer.toString(preciofinal) + 
 					"  <br> El precio a pagar en la sede (30% del total de tu reserva) es: " + String.valueOf(preciofinal*0.3) +

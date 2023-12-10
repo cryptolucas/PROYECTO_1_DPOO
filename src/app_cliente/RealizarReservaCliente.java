@@ -1,4 +1,5 @@
-package consola;
+package app_cliente;
+
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -24,7 +25,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class RealizarReserva extends JFrame implements ActionListener {
+import consola.PAYPAL;
+
+public class RealizarReservaCliente extends JFrame implements ActionListener {
 	
 	
 	
@@ -92,9 +95,9 @@ public class RealizarReserva extends JFrame implements ActionListener {
 	
 	private JButton boton_reserva;
 	
-	private Principal principal;
+	private ClientePrincipal principal;
 	
-	public RealizarReserva(Principal p_principal) {
+	public RealizarReservaCliente(ClientePrincipal p_principal) {
 		
 		principal = p_principal;
 		
@@ -410,7 +413,7 @@ public class RealizarReserva extends JFrame implements ActionListener {
 					
 					JOptionPane.showMessageDialog(null, res, "Continuar al pago",  JOptionPane.INFORMATION_MESSAGE);
 					
-					PAYPAL ppp = new PAYPAL(principal);
+					PAYPALCliente ppp = new PAYPALCliente(principal);
 					ppp.setLocationRelativeTo(null);
 					ppp.setVisible(true);
 					
@@ -428,7 +431,7 @@ public class RealizarReserva extends JFrame implements ActionListener {
 					
 					JOptionPane.showMessageDialog(null, res, "Continuar al pago",  JOptionPane.INFORMATION_MESSAGE);
 					
-					PAYU uuu = new PAYU(principal);
+					PAYUCliente uuu = new PAYUCliente(principal);
 					uuu.setLocationRelativeTo(null);
 					uuu.setVisible(true);
 					
@@ -445,9 +448,10 @@ public class RealizarReserva extends JFrame implements ActionListener {
 							txtFecha1.getText(), txtFecha2.getText(), getMetodoPago(), Integer.parseInt(txtConductoresAdicionales.getText()),
 									getSeguro(), getTipoVehiculo());
 					
+					
 					JOptionPane.showMessageDialog(null, res, "Continuar al pago",  JOptionPane.INFORMATION_MESSAGE);
 					
-					COINK kkk = new COINK(principal);
+					COINKCliente kkk = new COINKCliente(principal);
 					kkk.setLocationRelativeTo(null);
 					kkk.setVisible(true);
 					
@@ -465,7 +469,8 @@ public class RealizarReserva extends JFrame implements ActionListener {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-					
+			
+		dispose();
 		}
 	}
 	

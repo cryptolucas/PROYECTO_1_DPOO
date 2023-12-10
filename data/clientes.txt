@@ -13,3 +13,4 @@ camilo,cami234,12 abril 1989,americana,7171616,estados unidos,12 abril 1818,1717
 Luz Maria,luzma1967,12 noviembre 1980,colombiana,5257277272,colombia,26 octubre 2023,3177004142,123456789100
 German Mejia,german123,6 sept 1970,colombia,7171717,colombia,27 sept 2030,3157920352,62626626262
 messi,messi@bucho.com,13 junio 1989,argentina,63636363,argentina,25 junio 1991,3145255252,277272727
+Sebitas,sebas@gmail.com,23 de septiembre de 1940,bolivia,3432423,bolivia,23 mayo 2030,23232323,123343432
