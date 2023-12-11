@@ -14,3 +14,4 @@ Luz Maria,luzma1967,12 noviembre 1980,colombiana,5257277272,colombia,26 octubre 
 German Mejia,german123,6 sept 1970,colombia,7171717,colombia,27 sept 2030,3157920352,62626626262
 messi,messi@bucho.com,13 junio 1989,argentina,63636363,argentina,25 junio 1991,3145255252,277272727
 Sebitas,sebas@gmail.com,23 de septiembre de 1940,bolivia,3432423,bolivia,23 mayo 2030,23232323,123343432
+yanfry ,yanfry@gmail.com,23 de mayo 2005,chocuana,225525,choco,23 de mayo 2030,5352324,1234144222

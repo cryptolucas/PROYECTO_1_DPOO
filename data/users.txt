@@ -24,3 +24,4 @@ gama1967,Cliente,germanmejia@gmail.com
 messigod,messi123,cliente
 nuevocaca,caca123,empleado
 sebitas123,sebaslol,cliente
+yanfrygod,y123,cliente
